@@ -2,12 +2,155 @@
  * Tour Detail Page Shared Styles
  * Boston Hidden Gems
  *
- * This file contains all CSS for tour detail pages (section-3-content.html).
+ * This file contains all CSS for tour detail pages:
+ * - Section 1: Header (breadcrumb, title, ratings)
+ * - Section 2: Calendar (cancellation info)
+ * - Section 3: Content (itinerary, highlights, FAQ, etc.)
+ *
  * Loaded via jsDelivr CDN from GitHub repository.
  *
  * Usage: Include in header-script.html:
- * <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chrisbhg/bostonhiddengems@main/src/squarespace-website/src/shared/tour-detail.css">
+ * <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Hidden-Gems-Tours/bostonhiddengems-public@main/tour-detail.css">
  */
+
+/* ==========================================================================
+   SECTION 1: HEADER STYLES (Breadcrumb, Title, Rating)
+   ========================================================================== */
+
+/* --- BREADCRUMB --- */
+.tour-breadcrumb {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.tour-breadcrumb a {
+  color: #172436;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.tour-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* --- TOUR HEADER --- */
+.tour-detail-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tour-detail-header h1 {
+  font-size: 35px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  color: #172436;
+}
+
+.tour-detail-header .rating-line {
+  margin-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.tour-detail-header .rating-line a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tour-detail-header .trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.tour-detail-header .viator-badge-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  color: #172436;
+}
+
+.tour-detail-header .viator-badge-inline img {
+  height: 20px;
+  vertical-align: middle;
+}
+
+.tour-detail-header .nav-links {
+  margin-bottom: 20px;
+}
+
+.tour-detail-header .nav-links a {
+  margin: 0 15px;
+}
+
+/* Star Rating */
+.stars-display {
+  color: #ffd700;
+  font-size: 1.1em;
+}
+
+.stars-display .half-star {
+  position: relative;
+  display: inline-block;
+}
+
+.stars-display .half-star::before {
+  content: "\2605";
+  position: absolute;
+  left: 0;
+  color: #ffd700;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* ==========================================================================
+   SECTION 2: CALENDAR STYLES (Cancellation Info)
+   ========================================================================== */
+
+/* --- CANCELLATION INFO --- */
+.cancellation-info {
+  text-align: center;
+  margin-top: 15px;
+  padding: 12px;
+  background-color: #EAEFF6;
+  border-radius: 8px;
+}
+
+.cancellation-info p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #172436;
+}
+
+.cancellation-info .material-symbols-sharp {
+  vertical-align: middle;
+  font-size: 18px;
+}
+
+.cancellation-info a {
+  color: inherit;
+  display: inline;
+  vertical-align: baseline;
+}
+
+.cancellation-info .trip-protection {
+  color: #172436;
+}
+
+.cancellation-info .trip-protection a {
+  color: inherit;
+}
+
+/* Override global underline positioning for calendar links */
+.cancellation-info a.underline::after {
+  bottom: -2px;
+}
 
 /* ==========================================================================
    TOUR DETAIL PAGE STYLES - SECTION 3
@@ -609,6 +752,58 @@
    MOBILE RESPONSIVE (max-width: 767px)
    ========================================================================== */
 @media only screen and (max-width: 767px) {
+  /* --- SECTION 1: Header Mobile --- */
+  .tour-breadcrumb {
+    padding: 0 15px;
+  }
+
+  .tour-detail-header h1 {
+    font-size: 28px;
+    padding: 0 15px;
+  }
+
+  .tour-detail-header .rating-line {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Stack reviews and badge vertically on mobile */
+  .tour-detail-header .trust-badges {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Hide separator on mobile (replaced by line break) */
+  .tour-detail-header
+    .rating-line
+    .trust-badges
+    > span:not(.viator-badge-inline) {
+    display: none;
+  }
+
+  .tour-detail-header .nav-links a {
+    margin: 0 10px;
+    font-size: 14px;
+  }
+
+  .tour-detail-header .viator-badge-inline {
+    font-size: 13px;
+  }
+
+  /* --- SECTION 2: Calendar Mobile --- */
+  .booking-section-header h2 {
+    font-size: 18px;
+  }
+
+  .cancellation-info {
+    padding: 10px;
+  }
+
+  .cancellation-info p {
+    font-size: 13px;
+  }
+
+  /* --- SECTION 3: Content Mobile --- */
   .tour-quick-details-bar {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px 15px;
