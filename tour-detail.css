@@ -1,0 +1,771 @@
+/**
+ * Tour Detail Page Shared Styles
+ * Boston Hidden Gems
+ *
+ * This file contains all CSS for tour detail pages (section-3-content.html).
+ * Loaded via jsDelivr CDN from GitHub repository.
+ *
+ * Usage: Include in header-script.html:
+ * <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/chrisbhg/bostonhiddengems@main/src/squarespace-website/src/shared/tour-detail.css">
+ */
+
+/* ==========================================================================
+   TOUR DETAIL PAGE STYLES - SECTION 3
+   ========================================================================== */
+
+/* --- TIMELINE COMPONENT (Desktop) --- */
+.itin-timeline {
+  box-sizing: border-box;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  right: 40.5%;
+}
+
+.itin-timeline img {
+  max-height: 250px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* The vertical timeline ruler */
+.itin-timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: #7CAEF4;
+  top: 0;
+  bottom: 30px;
+  left: 50%;
+  margin-left: -2px;
+  z-index: 0;
+}
+
+/* Timeline container for each stop */
+.timeline-container {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+/* Timeline date badge */
+.timeline-date {
+  color: #172436;
+  font-weight: 500;
+  background-color: #D6E5FC;
+  width: 70px;
+  height: 30px;
+  text-align: center;
+  border-radius: 6px;
+  position: relative;
+  margin: 0 auto;
+  z-index: 1;
+  line-height: 30px;
+}
+
+/* Timeline content box */
+.timeline-content {
+  padding: 0.01px 1em 0.75em;
+  background-color: #D6E5FC;
+  position: relative;
+  border-radius: 10px;
+  width: calc(70% - 10px);
+  top: -30px;
+  margin: 0 auto;
+  left: calc(35% + 75px);
+  z-index: 3;
+}
+
+.timeline-content p {
+  color: #172436;
+}
+
+.timeline-content h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #172436;
+  margin: 0.75em 0 0.5em 0;
+  line-height: 1.3;
+}
+
+.timeline-content h3:first-child {
+  margin-top: 1em;
+}
+
+/* Arrow pointing from content to date */
+.timeline-content::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 5px;
+  width: 0;
+  z-index: 2;
+  left: -17px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #172436 transparent transparent;
+}
+
+/* Hide timeline overflow after last item */
+.timeline-container:last-of-type .timeline-content::after {
+  content: " ";
+  position: absolute;
+  top: 30px;
+  width: 100px;
+  height: calc(100% - 30px);
+  z-index: 1;
+  left: -125px;
+  background-color: white;
+}
+
+/* Timeline image containers */
+.card-image-flat {
+  width: 100%;
+  padding-top: 60%;
+  position: relative;
+  margin-bottom: 0.5em;
+}
+
+.card-image-tall {
+  width: 50%;
+  padding-top: 60%;
+  position: relative;
+  margin: 0.5em auto;
+}
+
+/* --- QUICK DETAILS BAR --- */
+.tour-quick-details-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px 20px;
+  padding: 20px;
+  margin: 40px 0 30px 0;
+  background-color: #EAEFF6;
+  border-radius: 20px;
+}
+
+.tour-quick-details-bar .tour-data-points {
+  text-align: center;
+  line-height: 1.4;
+}
+
+.tour-quick-details-bar .material-symbols-sharp {
+  vertical-align: -0.25em;
+  line-height: 1;
+}
+
+/* --- HIGHLIGHTS SECTION --- */
+.tour-highlights-section {
+  margin: 20px 0 30px 0;
+  padding: 25px;
+  border: 3px solid #DE5700;
+  border-radius: 20px;
+}
+
+.tour-highlights-section h2 {
+  text-align: center;
+  font-size: 22px;
+  padding: 20px;
+  margin: 0 auto 20px auto;
+  background-color: #172436;
+  color: #FFFFFF;
+  border-radius: 20px;
+  max-width: 400px;
+}
+
+.tour-highlights-section h2 .material-symbols-sharp {
+  color: #FFFFFF;
+  vertical-align: -0.17em;
+  margin-right: 8px;
+  line-height: 1;
+}
+
+.highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 30px;
+}
+
+.highlights-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 15px;
+}
+
+.highlights-list li .material-symbols-sharp {
+  color: #7CAEF4;
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 4px;
+  line-height: 1;
+}
+
+/* --- WHAT'S INCLUDED SECTION --- */
+.tour-whats-included-section {
+  margin-top: 20px;
+}
+
+.tour-whats-included-section h2 {
+  text-align: center;
+  font-size: 24px;
+  padding: 20px;
+  margin: 0 auto 20px auto;
+  background-color: #172436;
+  color: #FFFFFF;
+  border-radius: 20px;
+  max-width: 400px;
+}
+
+.tour-whats-included-section h2 .material-symbols-sharp {
+  vertical-align: -0.175em;
+  margin-right: 8px;
+  color: #FFFFFF;
+  line-height: 1;
+}
+
+.included-subheader,
+.excluded-subheader {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 25px auto 15px auto;
+  color: #172436;
+  text-align: center;
+  max-width: 600px;
+}
+
+.included-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 15px auto;
+  max-width: 600px;
+}
+
+.included-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.included-list li .material-symbols-sharp {
+  font-size: 18px;
+}
+
+.included-list li.included .material-symbols-sharp {
+  color: #28a745;
+}
+
+.included-list li.not-included {
+  color: #666;
+}
+
+.included-list li.not-included .material-symbols-sharp {
+  color: #dc3545;
+}
+
+/* --- FAQ SECTION --- */
+.tour-faq-section {
+  margin-top: 20px;
+}
+
+.tour-faq-section h2 {
+  text-align: center;
+  font-size: 24px;
+  padding: 20px;
+  margin: 0 auto 25px auto;
+  background-color: #172436;
+  color: #FFFFFF;
+  border-radius: 20px;
+  scroll-margin: 150px;
+  max-width: 400px;
+}
+
+.tour-faq-section h2 .material-symbols-sharp {
+  vertical-align: -0.17em;
+  margin-right: 8px;
+  color: #FFFFFF;
+  line-height: 1;
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.faq-item:first-child {
+  border-top: 1px solid #e0e0e0;
+}
+
+.faq-question-wrapper {
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s ease;
+  padding: 8px 0;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.faq-question-wrapper:hover {
+  background-color: #f0f2f5;
+}
+
+.faq-question-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.9%205.4s9.3-1.8%2012.9-5.4L287%2095.1c3.6-3.6%205.4-7.8%205.4-12.9%200-5-1.8-9.3-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 15px auto;
+  padding-right: 35px;
+  transition: all 0.3s ease;
+}
+
+.faq-question {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.3;
+  padding: 0;
+  color: #172436;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 10px;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 500px;
+  padding: 20px 10px;
+}
+
+.faq-answer p {
+  margin: 0;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* --- ITINERARY EXPAND/COLLAPSE --- */
+.itinerary-expand-btn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+  background-color: #D6E5FC;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #172436;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+
+.itinerary-expand-btn:hover {
+  background-color: #c5d9f7;
+}
+
+.itinerary-expand-btn .material-symbols-sharp {
+  vertical-align: middle;
+  margin-right: 5px;
+  transition: transform 0.3s ease;
+}
+
+.itinerary-expanded .itinerary-expand-btn .material-symbols-sharp {
+  transform: rotate(180deg);
+}
+
+.timeline-container.hidden-stop {
+  display: none;
+}
+
+.itinerary-expanded .timeline-container.hidden-stop {
+  display: block;
+}
+
+/* --- REVIEWS SECTION --- */
+.tour-reviews-section {
+  margin-top: 20px;
+}
+
+/* --- RELATED TOURS SECTION --- */
+.related-tours-section {
+  margin: 40px 0 30px 0;
+  padding: 30px 0;
+  border-top: 1px solid #cdd3da;
+}
+
+.related-tours-section h2 {
+  text-align: center;
+  font-size: 24px;
+  padding: 20px;
+  margin: 0 auto 30px auto;
+  background-color: #172436;
+  color: #FFFFFF;
+  border-radius: 20px;
+  scroll-margin: 150px;
+  max-width: 400px;
+}
+
+.related-tours-section h2 .material-symbols-sharp {
+  vertical-align: -0.17em;
+  margin-right: 8px;
+  color: #FFFFFF;
+  line-height: 1;
+}
+
+.related-tours-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- TWO-COLUMN LAYOUT --- */
+.tour-content-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 40px;
+  margin-top: 40px;
+  align-items: start;
+}
+
+.tour-content-columns > * {
+  min-width: 0;
+}
+
+/* Left column: Container that stacks its children naturally */
+.tour-left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Right column: Container that stacks its children naturally */
+.tour-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* --- SECTION TITLES --- */
+.section-title {
+  text-align: center;
+  padding: 20px;
+  background-color: #172436;
+  color: #FFFFFF;
+  border-radius: 20px;
+  margin: 0 auto 20px auto;
+  scroll-margin: 150px;
+  font-size: 24px;
+  max-width: 400px;
+}
+
+.section-title .material-symbols-sharp {
+  vertical-align: -0.175em;
+  margin-right: 8px;
+  color: #FFFFFF;
+  line-height: 1;
+}
+
+/* --- CTA DIVIDER --- */
+/* Hide FAQ CTA on desktop (shown on mobile only) */
+.tour-faq-section .cta-divider {
+  display: none;
+}
+
+/* --- CTA DIVIDER --- */
+.cta-divider {
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid #cdd3da;
+  border-bottom: 1px solid #cdd3da;
+  margin: 60px 0;
+}
+
+.cta-divider .btn-primary {
+  display: inline-block;
+  background-color: #DE5700;
+  color: #FFFFFF;
+  padding: 12px 40px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cta-divider .btn-primary:hover {
+  background-color: #B64800;
+}
+
+/* --- PRICING TABLE --- */
+.pricing-table {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+
+.pricing-table th {
+  padding: 15px;
+  background-color: transparent;
+  font-weight: bold;
+}
+
+.pricing-table td {
+  padding: 10px 15px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.pricing-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* --- MEETING POINT MAP --- */
+.meeting-point-map {
+  margin: 20px 0;
+}
+
+.meeting-point-map iframe {
+  border-radius: 10px;
+  border: 1px solid #cdd3da;
+}
+
+/* --- BOTTOM FOOTER --- */
+.tour-bottom-footer {
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.tour-bottom-footer .btn-primary {
+  display: inline-block;
+  background-color: #DE5700;
+  color: #FFFFFF;
+  padding: 12px 40px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.tour-bottom-footer .btn-primary:hover {
+  background-color: #B64800;
+}
+
+.tour-bottom-footer .back-to-top-link {
+  color: #7CAEF4;
+  text-decoration: underline;
+}
+
+/* --- DETAILS LIST --- */
+.details-list {
+  list-style-position: inside;
+  padding-left: 10px;
+}
+
+.details-list ul {
+  margin-left: 0.5em;
+}
+
+/* ==========================================================================
+   TABLET RESPONSIVE (768px - 991px)
+   ========================================================================== */
+@media (max-width: 991px) {
+  .tour-quick-details-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVE (max-width: 767px)
+   ========================================================================== */
+@media only screen and (max-width: 767px) {
+  .tour-quick-details-bar {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 15px;
+    padding: 15px;
+  }
+
+  .tour-quick-details-bar .tour-data-points {
+    text-align: left;
+    padding: 0;
+    font-size: 14px;
+  }
+
+  .tour-quick-details-bar .material-symbols-sharp {
+    font-size: 18px;
+    vertical-align: -0.25em;
+    line-height: 1;
+  }
+
+  .tour-content-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* On mobile, both columns become stacked flex containers */
+  .tour-left-column,
+  .tour-right-column {
+    display: contents;
+  }
+
+  /* All sections full width on mobile */
+  .tour-itinerary-section,
+  .tour-reviews-section,
+  .tour-description-section,
+  .tour-details-section,
+  .tour-meeting-section,
+  .tour-faq-section,
+  .tour-whats-included-section {
+    width: 100%;
+  }
+
+  /* Reorder sections on mobile: Description, Itinerary, What's Included, Details, Meeting, FAQ, Reviews */
+  .tour-description-section { order: 1; }
+  .tour-itinerary-section { order: 2; }
+  .tour-whats-included-section { order: 3; }
+  .tour-details-section { order: 4; }
+  .tour-meeting-section { order: 5; }
+  .tour-faq-section { order: 6; }
+  .tour-reviews-section { order: 7; }
+
+  /* Hide desktop-only CTAs on mobile */
+  .desktop-only-cta {
+    display: none;
+  }
+
+  /* Show CTAs between all sections on mobile */
+  .tour-description-section .cta-divider,
+  .tour-whats-included-section .cta-divider,
+  .tour-itinerary-section .cta-divider,
+  .tour-details-section .cta-divider,
+  .tour-meeting-section .cta-divider,
+  .tour-faq-section .cta-divider {
+    display: block;
+    margin: 30px 0;
+  }
+
+  .related-tours-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Highlights mobile */
+  .highlights-list {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .tour-highlights-section {
+    padding: 20px 15px;
+  }
+
+  /* FAQ mobile */
+  .faq-question {
+    font-size: 15px;
+    padding: 15px 35px 15px 0;
+  }
+
+  /* --- MOBILE TIMELINE FIXES --- */
+  .itin-timeline {
+    padding-left: 15px;
+    right: 0;
+  }
+
+  .itin-timeline::after {
+    left: 12px;
+    margin-left: 0;
+  }
+
+  .timeline-date {
+    position: absolute;
+    transform: translateX(-50%);
+    top: -15px;
+    margin: 0;
+  }
+
+  .timeline-container {
+    position: relative;
+    margin-bottom: 15px;
+    padding-top: 10px;
+  }
+
+  .tour-itinerary-section .section-title {
+    margin-bottom: 30px;
+  }
+
+  .timeline-content {
+    width: calc(95% - 60px);
+    margin-left: auto;
+    margin-right: 0;
+    top: -25px;
+    left: 10px;
+  }
+
+  .timeline-content::before {
+    left: -17px;
+  }
+
+  .timeline-container:last-of-type .timeline-content::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 30px;
+    width: 50px;
+    height: calc(100% - 30px);
+    z-index: 1;
+    left: -70px;
+    background-color: white;
+  }
+
+  .cta-divider {
+    margin: 30px 0;
+  }
+}
+
+/* ==========================================================================
+   DESKTOP OVERRIDES (min-width: 768px)
+   These MUST come last to override base styles properly
+   ========================================================================== */
+@media only screen and (min-width: 768px) {
+  /* Hide CTA below itinerary on desktop */
+  .tour-itinerary-section .cta-divider {
+    display: none;
+  }
+
+  /* Reduce top padding on section headers that follow CTA dividers */
+  .tour-details-section .section-title,
+  .tour-meeting-section .section-title,
+  .tour-reviews-section .section-title {
+    padding-top: 20px;
+  }
+}
