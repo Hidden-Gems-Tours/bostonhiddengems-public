@@ -30,11 +30,13 @@ function initRelatedTours(tourSku) {
 
   // Filter out: current tour, inactive tours, custom tours, and self-guided tours
   var excludedTypes = ['custom', 'self-guided'];
+  var excludedSkus = ['Custom']; // Custom Tours has type "private" but should be excluded
   var relatedTours = allToursArray
     .filter(function(t) {
       return t.sku !== tourSku &&
              t.status && t.status.isActive &&
-             !excludedTypes.includes(t.type);
+             !excludedTypes.includes(t.type) &&
+             !excludedSkus.includes(t.sku);
     })
     .map(function(t) {
       var relevance = 0;
