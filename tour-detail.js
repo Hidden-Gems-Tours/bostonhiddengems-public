@@ -28,9 +28,13 @@ function initRelatedTours(tourSku) {
   var currentTour = allToursArray.find(function(t) { return t.sku === tourSku; });
   if (!currentTour) return;
 
+  // Filter out: current tour, inactive tours, custom tours, and self-guided tours
+  var excludedTypes = ['custom', 'self-guided'];
   var relatedTours = allToursArray
     .filter(function(t) {
-      return t.sku !== tourSku && t.status && t.status.isActive;
+      return t.sku !== tourSku &&
+             t.status && t.status.isActive &&
+             !excludedTypes.includes(t.type);
     })
     .map(function(t) {
       var relevance = 0;
