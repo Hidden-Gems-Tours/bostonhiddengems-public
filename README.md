@@ -38,7 +38,8 @@ See main repo documentation: [bostonhiddengems/CLAUDE.md](https://github.com/Hid
 
 ## Contents
 
-- **tour-detail.css** (~15KB) - Shared styles for all tour detail pages
+- **global-styles.css** (~18KB) - Site-wide CSS (design system, tour cards, filters)
+- **tour-detail.css** (~19KB) - Tour detail page specific styles
 - **tour-detail.js** (~6KB) - Shared JavaScript functions for tour detail pages
 - **tour-listing.js** (~16KB) - Tour card rendering and filtering functions
 
@@ -48,6 +49,7 @@ These files are loaded via CDN in the main website:
 
 ```html
 <!-- In header-script.html -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Hidden-Gems-Tours/bostonhiddengems-public@main/global-styles.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Hidden-Gems-Tours/bostonhiddengems-public@main/tour-detail.css">
 <script src="https://cdn.jsdelivr.net/gh/Hidden-Gems-Tours/bostonhiddengems-public@main/tour-detail.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/Hidden-Gems-Tours/bostonhiddengems-public@main/tour-listing.js"></script>
