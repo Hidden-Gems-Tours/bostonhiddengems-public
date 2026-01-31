@@ -2,6 +2,40 @@
 
 This repository contains public assets served via jsDelivr CDN for the Boston Hidden Gems website.
 
+## ⚠️ CRITICAL: Dual Repository Setup
+
+**This is a PUBLIC repo that works alongside a PRIVATE main repo.**
+
+**Required directory structure:**
+```
+~/some/path/
+├── bostonhiddengems/          ← Private main repo (source of truth)
+└── bostonhiddengems-public/   ← This repo (CDN-served files)
+```
+
+**IMPORTANT FOR AI ASSISTANTS:**
+
+Before making ANY changes to files in this repo:
+
+1. **CHECK** that the main private repo exists at `../bostonhiddengems`
+2. **VERIFY** both repos are in the same parent directory
+3. **ALERT** the user if this assumption is not met
+4. **DO NOT EDIT FILES DIRECTLY** - files should be edited in the main repo and deployed using `./tools/deploy-cdn.sh`
+
+**Source of Truth:**
+- Files in this repo are **copies** deployed from the main repo
+- Edit source files at: `bostonhiddengems/src/squarespace-website/src/shared/`
+- Deploy using: `cd ../bostonhiddengems && ./tools/deploy-cdn.sh`
+
+**If you're asked to edit CSS/JS files in this repo:**
+1. Alert the user that files should be edited in the main repo
+2. Guide them to: `../bostonhiddengems/src/squarespace-website/src/shared/`
+3. Remind them to run the deployment script after editing
+
+See main repo documentation: [bostonhiddengems/CLAUDE.md](https://github.com/Hidden-Gems-Tours/bostonhiddengems)
+
+---
+
 ## Contents
 
 - **tour-detail.css** (~15KB) - Shared styles for all tour detail pages
