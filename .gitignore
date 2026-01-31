@@ -1,0 +1,223 @@
+# ============================================================================
+# SECURITY WARNING - READ CAREFULLY
+# ============================================================================
+# This is a PUBLIC repository. Everything committed here is visible to anyone.
+#
+# NEVER COMMIT:
+# - Credentials, API keys, tokens, or secrets
+# - .env files or environment configurations
+# - OAuth credentials or client secrets
+# - Database connection strings
+# - Private configuration files
+# - Customer data or PII
+# - Internal business logic
+#
+# If you accidentally commit sensitive data:
+# 1. Immediately rotate the exposed credentials
+# 2. Use git filter-branch or BFG Repo-Cleaner to remove from history
+# 3. Force push (coordinate with team)
+# 4. The data should be considered compromised
+# ============================================================================
+
+# ============================================================================
+# CREDENTIALS AND SECRETS - MUST IGNORE
+# ============================================================================
+
+# Environment files (may contain secrets)
+.env
+.env.*
+.env.local
+.env.development
+.env.test
+.env.production
+*.env
+
+# API keys and credentials
+*.key
+*.pem
+*.p12
+*.pfx
+credentials.json
+*credentials*.json
+*secrets*.json
+*-oauth.keys.json
+gcp-oauth.keys.json
+service-account*.json
+firebase*.json
+
+# OAuth and tokens
+token.json
+tokens.json
+*.token
+oauth*.json
+
+# Cloud provider credentials
+.aws/
+.gcp/
+.azure/
+google-cloud-key.json
+
+# SSH keys (should never be in repo)
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+*.ppk
+
+# ============================================================================
+# OPERATING SYSTEM FILES
+# ============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ============================================================================
+# IDE AND EDITOR FILES
+# ============================================================================
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# JetBrains (WebStorm, IntelliJ, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+*.swp
+*.swo
+*.swn
+*~
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ============================================================================
+# NODE.JS / JAVASCRIPT
+# ============================================================================
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+out/
+.output/
+*.min.js
+*.min.css
+
+# Package manager locks (optional - uncomment if not needed)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# TypeScript
+*.tsbuildinfo
+
+# Cache
+.cache/
+.parcel-cache/
+.turbo/
+*.cache
+
+# ============================================================================
+# TESTING AND COVERAGE
+# ============================================================================
+
+coverage/
+.nyc_output/
+*.lcov
+
+# ============================================================================
+# LOGS AND TEMPORARY FILES
+# ============================================================================
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+
+# ============================================================================
+# DOCUMENTATION BUILD (if using doc generators)
+# ============================================================================
+
+docs/_build/
+site/
+
+# ============================================================================
+# MISCELLANEOUS
+# ============================================================================
+
+# Archives (unlikely needed in CDN repo)
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# Large media files (should use proper CDN/image hosting)
+*.mp4
+*.mov
+*.avi
+*.wmv
+*.mp3
+*.wav
+
+# Local development
+.local/
+local/
+
+# Claude Code settings (local only)
+.claude/settings.local.json
