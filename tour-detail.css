@@ -35,22 +35,23 @@
 
 /* --- TOUR HEADER --- */
 .tour-detail-header {
-  text-align: center;
+  text-align: center !important;
   margin-bottom: 20px;
 }
 
 .tour-detail-header h1 {
-  font-size: 35px;
-  font-weight: bold;
-  margin: 0 0 10px 0;
-  color: #172436;
+  font-size: 35px !important;
+  font-weight: bold !important;
+  margin: 0 0 10px 0 !important;
+  color: #172436 !important;
+  text-align: center !important;
 }
 
 .tour-detail-header .rating-line {
   margin-bottom: 15px;
-  display: flex;
+  display: flex !important;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: center !important;
   align-items: center;
   gap: 8px;
 }
@@ -61,9 +62,9 @@
 }
 
 .tour-detail-header .trust-badges {
-  display: flex;
+  display: flex !important;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: center !important;
   align-items: center;
   gap: 8px;
 }
@@ -72,21 +73,25 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-size: 14px;
+  font-size: 14px !important;
   color: #172436;
 }
 
 .tour-detail-header .viator-badge-inline img {
-  height: 20px;
+  height: 20px !important;
+  width: auto !important;
+  max-height: 20px !important;
   vertical-align: middle;
 }
 
 .tour-detail-header .nav-links {
   margin-bottom: 20px;
+  text-align: center !important;
 }
 
 .tour-detail-header .nav-links a {
   margin: 0 15px;
+  font-size: inherit !important;
 }
 
 /* Star Rating */
