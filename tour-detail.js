@@ -74,7 +74,8 @@ function initRelatedTours(tourSku) {
 }
 
 /**
- * Update tour data elements from allToursArray (rating, reviews, price, type)
+ * Update tour data elements from allToursArray
+ * Updates: rating, reviews, price, price suffix, type, group size, duration
  * @param {string} tourSku - The SKU of the current tour
  */
 function updateTourData(tourSku) {
@@ -101,10 +102,30 @@ function updateTourData(tourSku) {
     priceEl.textContent = tour.price;
   }
 
+  // Update price suffix (per adult / per group)
+  var priceSuffixEl = document.getElementById('tour-price-suffix');
+  if (priceSuffixEl && tour.priceType) {
+    priceSuffixEl.textContent = tour.priceType;
+  }
+
   // Update tour type
   var typeEl = document.getElementById('tour-type');
   if (typeEl && tour.type) {
     typeEl.textContent = tour.type.charAt(0).toUpperCase() + tour.type.slice(1);
+  }
+
+  // Update group size
+  var groupSizeEl = document.getElementById('tour-group-size');
+  if (groupSizeEl && tour.guestMin != null && tour.guestMax != null) {
+    groupSizeEl.textContent = tour.guestMin + ' to ' + tour.guestMax;
+  }
+
+  // Update duration
+  var durationEl = document.getElementById('tour-duration');
+  if (durationEl && tour.durationVal) {
+    var hours = Math.floor(tour.durationVal);
+    var minutes = Math.round((tour.durationVal - hours) * 60);
+    durationEl.textContent = hours + 'h' + (minutes > 0 ? ' ' + minutes + 'm' : '');
   }
 }
 
