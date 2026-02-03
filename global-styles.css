@@ -898,6 +898,28 @@ textarea:focus-visible,
   outline-offset: 2px;
 }
 
+/* Header elements on dark background need light focus indicators */
+.header a:focus-visible,
+.header button:focus-visible,
+.header [tabindex]:focus-visible,
+.header-nav a:focus-visible,
+.header-menu a:focus-visible,
+.header-actions a:focus-visible,
+.header-menu-actions-action:focus-visible,
+[data-section-theme="dark"] a:focus-visible,
+[data-section-theme="dark"] button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* Footer on dark background also needs light focus */
+.footer a:focus-visible,
+.footer button:focus-visible,
+[class*="footer"] a:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
 /* ==========================================================================
    ACCESSIBILITY: REDUCED MOTION (WCAG 2.3.3)
    ========================================================================== */
