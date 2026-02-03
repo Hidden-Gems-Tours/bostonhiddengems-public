@@ -321,8 +321,8 @@ function renderTourCards(containerId, options = {}) {
         // Self-guided tours don't show reviews
         detailsHTML = `
           <div class="card-details">
-            <span class="material-symbols-sharp">timer</span> ${durationDisplay}&ensp;•&thinsp;
-            <span class="material-symbols-sharp">person</span> ${tour.guestMin}-${tour.guestMax}
+            <span class="material-symbols-sharp" aria-hidden="true">timer</span> ${durationDisplay}&ensp;•&thinsp;
+            <span class="material-symbols-sharp" aria-hidden="true">person</span> ${tour.guestMin}-${tour.guestMax}
             <br>
             <span style="font-weight:bold;">${tourPrice}</span>
           </div>`;
@@ -348,8 +348,8 @@ function renderTourCards(containerId, options = {}) {
         detailsHTML = `
           <div class="card-details">
             ${rating}&thinsp;${starsHTML}&thinsp;(${reviewCount})&ensp;•&thinsp;
-            <span class="material-symbols-sharp">timer</span> ${durationDisplay}&ensp;•&thinsp;
-            <span class="material-symbols-sharp">person</span> ${tour.guestMin}-${tour.guestMax}
+            <span class="material-symbols-sharp" aria-hidden="true">timer</span> ${durationDisplay}&ensp;•&thinsp;
+            <span class="material-symbols-sharp" aria-hidden="true">person</span> ${tour.guestMin}-${tour.guestMax}
             <br>
             <span style="font-weight:bold;">${tourPrice}</span>
           </div>`;

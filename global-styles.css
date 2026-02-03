@@ -336,7 +336,6 @@
   padding: 0 35px 0 18px;
   box-sizing: border-box;
   width: 100%;
-  outline: none;
   transition: border-color 0.2s;
   cursor: pointer;
   appearance: none;
@@ -474,7 +473,6 @@
   padding: 0 12px;
   box-sizing: border-box;
   width: 100%;
-  outline: none;
   transition: border-color 0.2s;
 }
 
@@ -840,6 +838,109 @@ html {
   margin-top: 4.25%;
   background-size: 80%;
   background-repeat: no-repeat;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY: FOCUS INDICATORS (WCAG 2.4.7)
+   ========================================================================== */
+
+/* Global focus-visible styles for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--primary-navy);
+  outline-offset: 2px;
+}
+
+/* Interactive elements get visible focus indicators */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--primary-navy);
+  outline-offset: 2px;
+}
+
+/* Cards and interactive containers */
+.card:focus-visible {
+  outline: 2px solid var(--primary-navy);
+  outline-offset: 4px;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+}
+
+/* Filter controls */
+#toggle-filters-btn:focus-visible,
+#reset-btn:focus-visible,
+.sort-options .option:focus-visible,
+.quick-filter-btn:focus-visible {
+  outline: 2px solid var(--primary-navy);
+  outline-offset: 2px;
+  background-color: var(--hover-background);
+}
+
+/* Dropdown triggers */
+.selectBox:focus-visible,
+.dropdown-header:focus-visible {
+  outline: 2px solid var(--primary-navy);
+  outline-offset: 2px;
+}
+
+/* Toggle switches - highlight the container */
+.switch input:focus-visible + .slider {
+  outline: 2px solid var(--primary-navy);
+  outline-offset: 2px;
+}
+
+/* Checkbox labels when checkbox is focused */
+.checkbox-list input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--primary-navy);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY: REDUCED MOTION (WCAG 2.3.3)
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  /* Disable transitions */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Disable smooth scrolling */
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Keep hover transforms but make instant */
+  .card:hover {
+    transform: none;
+  }
+
+  .logo-item:hover {
+    transform: none;
+  }
+
+  /* Filter drawer opens instantly */
+  .filter-drawer {
+    transition: none;
+  }
+
+  /* Dropdown content opens instantly */
+  .dropdown-content {
+    transition: none;
+  }
+
+  /* Sort options and checkbox lists */
+  .sort-options,
+  .checkbox-list {
+    transition: none;
+  }
 }
 
 /* ==========================================================================

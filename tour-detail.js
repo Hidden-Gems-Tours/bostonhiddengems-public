@@ -161,15 +161,20 @@ function setupItineraryExpand(hiddenStopsCount) {
 
   if (!expandBtn || !itinerarySection) return;
 
+  // Set initial ARIA state (collapsed)
+  expandBtn.setAttribute('aria-expanded', 'false');
+
   expandBtn.addEventListener('click', function() {
     var isExpanded = itinerarySection.classList.contains('itinerary-expanded');
 
     if (isExpanded) {
       itinerarySection.classList.remove('itinerary-expanded');
       btnText.textContent = 'Show ' + hiddenStopsCount + ' more stops';
+      expandBtn.setAttribute('aria-expanded', 'false');
     } else {
       itinerarySection.classList.add('itinerary-expanded');
       btnText.textContent = 'Show less';
+      expandBtn.setAttribute('aria-expanded', 'true');
     }
   });
 }
@@ -182,15 +187,93 @@ function toggleFAQ(wrapper) {
   var faqItem = wrapper.closest('.faq-item');
   var isOpen = faqItem.classList.contains('open');
 
-  // Close all FAQ items (accordion behavior)
+  // Close all FAQ items (accordion behavior) and update ARIA states
   document.querySelectorAll('.faq-item').forEach(function(item) {
     item.classList.remove('open');
+    var itemWrapper = item.querySelector('.faq-question-wrapper');
+    if (itemWrapper) {
+      itemWrapper.setAttribute('aria-expanded', 'false');
+    }
   });
 
   // Toggle clicked item
   if (!isOpen) {
     faqItem.classList.add('open');
+    wrapper.setAttribute('aria-expanded', 'true');
   }
+}
+
+/**
+ * Initialize FAQ accessibility - add keyboard support and ARIA attributes
+ * Called automatically on DOMContentLoaded
+ */
+function initFAQAccessibility() {
+  var faqWrappers = document.querySelectorAll('.faq-question-wrapper');
+
+  faqWrappers.forEach(function(wrapper) {
+    // Add button role and keyboard support
+    wrapper.setAttribute('role', 'button');
+    wrapper.setAttribute('tabindex', '0');
+    wrapper.setAttribute('aria-expanded', 'false');
+
+    // Get the answer element and set up aria-controls
+    var faqItem = wrapper.closest('.faq-item');
+    var answer = faqItem ? faqItem.querySelector('.faq-answer') : null;
+    if (answer) {
+      // Generate unique ID if not present
+      if (!answer.id) {
+        answer.id = 'faq-answer-' + Math.random().toString(36).substr(2, 9);
+      }
+      wrapper.setAttribute('aria-controls', answer.id);
+    }
+
+    // Add keyboard event listener
+    wrapper.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleFAQ(wrapper);
+      }
+    });
+  });
+}
+
+/**
+ * Initialize icon accessibility - hide decorative icons from screen readers
+ * Material Symbols icons are decorative (text labels provide meaning)
+ * WCAG 1.1.1 (Non-text Content)
+ */
+function initIconAccessibility() {
+  var icons = document.querySelectorAll('.material-symbols-sharp');
+  icons.forEach(function(icon) {
+    icon.setAttribute('aria-hidden', 'true');
+  });
+}
+
+/**
+ * Initialize clickable image accessibility - add keyboard support
+ * Images with onclick="window.open(this.src, '_blank')" need keyboard access
+ * WCAG 2.1.1 (Keyboard)
+ */
+function initImageAccessibility() {
+  var clickableImages = document.querySelectorAll('img[onclick*="window.open"]');
+
+  clickableImages.forEach(function(img) {
+    // Make image focusable
+    img.setAttribute('tabindex', '0');
+    img.setAttribute('role', 'button');
+
+    // Add aria-label based on alt text
+    var altText = img.getAttribute('alt') || 'Image';
+    img.setAttribute('aria-label', 'View full size: ' + altText);
+
+    // Add keyboard event listener
+    img.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        window.open(img.src, '_blank');
+      }
+    });
+  });
 }
 
 /**
@@ -208,7 +291,9 @@ function initTourDetailPage(config) {
     updateTourData(tourSku);
     setupSmoothScroll();
     setupItineraryExpand(hiddenStopsCount);
-    // toggleFAQ is already global via onclick handlers in HTML
+    initFAQAccessibility(); // Add keyboard support and ARIA to FAQ items
+    initIconAccessibility(); // Hide decorative icons from screen readers
+    initImageAccessibility(); // Add keyboard support to clickable images
   }
 
   // Run on DOM ready or immediately if already loaded

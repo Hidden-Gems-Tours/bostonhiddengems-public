@@ -747,6 +747,103 @@
 }
 
 /* ==========================================================================
+   ACCESSIBILITY: FOCUS INDICATORS & KEYBOARD SUPPORT (WCAG 2.4.7)
+   ========================================================================== */
+
+/* FAQ question wrapper when used as accessible button */
+.faq-question-wrapper[role="button"] {
+  background: none;
+  border: none;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+
+.faq-question-wrapper:focus-visible {
+  outline: 2px solid #172436;
+  outline-offset: 2px;
+  background-color: #f0f2f5;
+}
+
+/* Itinerary expand button focus */
+.itinerary-expand-btn:focus-visible {
+  outline: 2px solid #172436;
+  outline-offset: 2px;
+}
+
+/* Clickable images in itinerary - keyboard accessible version */
+.itin-timeline img[tabindex="0"]:focus-visible,
+.itin-timeline button.image-lightbox-trigger:focus-visible {
+  outline: 3px solid #172436;
+  outline-offset: 2px;
+}
+
+/* Image lightbox trigger button (wraps images for keyboard access) */
+button.image-lightbox-trigger {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+button.image-lightbox-trigger img {
+  position: static;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* CTA and navigation links */
+.cta-divider .btn-primary:focus-visible,
+.tour-bottom-footer .btn-primary:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px #DE5700;
+}
+
+.back-to-top-link:focus-visible {
+  outline: 2px solid #172436;
+  outline-offset: 2px;
+}
+
+/* Navigation links in header */
+.tour-detail-header .nav-links a:focus-visible {
+  outline: 2px solid #172436;
+  outline-offset: 2px;
+}
+
+/* Related tours cards */
+.related-tours-section .similar-tour-box a:focus-visible {
+  outline: 2px solid #172436;
+  outline-offset: 4px;
+  border-radius: 20px;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY: REDUCED MOTION (WCAG 2.3.3)
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-answer,
+  .faq-question-box,
+  .itinerary-expand-btn .material-symbols-sharp,
+  .cta-divider .btn-primary,
+  .tour-bottom-footer .btn-primary {
+    transition: none;
+  }
+
+  .itinerary-expanded .itinerary-expand-btn .material-symbols-sharp {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
    TABLET RESPONSIVE (768px - 991px)
    ========================================================================== */
 @media (max-width: 991px) {
