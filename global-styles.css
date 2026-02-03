@@ -905,13 +905,31 @@ textarea:focus-visible,
    DARK BACKGROUND FOCUS OVERRIDE
    Set --focus-outline-color to white on navy/dark backgrounds.
    Children inherit this, so focused elements inside get white outlines.
+
+   NOTE: Be conservative here - only target elements KNOWN to have dark backgrounds.
+   Use utility class .dark-bg on other sections as needed.
    -------------------------------------------------------------------------- */
 
-/* Squarespace header and footer (typically navy) */
-.header,
-.footer,
-[class*="header"],
-[class*="footer"] {
+/* Squarespace site header and footer (semantic HTML elements) */
+header[data-section-theme="dark"],
+footer[data-section-theme="dark"],
+#header[data-section-theme="dark"],
+#footer[data-section-theme="dark"] {
+  --focus-outline-color: #ffffff;
+}
+
+/* Squarespace 7.1 header - target the actual site header, not .tour-header etc */
+body > header,
+#header,
+.header--menu-open,
+.header-announcement-bar-wrapper {
+  --focus-outline-color: #ffffff;
+}
+
+/* Squarespace 7.1 footer */
+body > footer,
+#footer,
+.footer-wrapper {
   --focus-outline-color: #ffffff;
 }
 
@@ -921,20 +939,11 @@ textarea:focus-visible,
   --focus-outline-color: #ffffff;
 }
 
-/* Elements with navy background (inline style or class) */
-[style*="background"][style*="172436"],
-[style*="background"][style*="#172436"],
-[style*="background-color"][style*="172436"],
-[style*="background-color"][style*="#172436"] {
-  --focus-outline-color: #ffffff;
-}
-
-/* Common dark background classes - add more as needed */
+/* Utility classes - add .dark-bg to any section with navy background */
 .bg-navy,
 .dark-bg,
 .navy-bg,
-.section-dark,
-.tour-quick-details-bar {
+.section-dark {
   --focus-outline-color: #ffffff;
 }
 
