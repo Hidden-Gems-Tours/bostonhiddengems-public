@@ -21,6 +21,8 @@
   --star-gold: var(--primary-gold);
   --hover-background: #f0f2f5;
   --arrow-svg: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  /* Accessibility: Focus outline color - inherits to children, override on dark backgrounds */
+  --focus-outline-color: var(--primary-navy);
 }
 
 /* ==========================================================================
@@ -844,9 +846,10 @@ html {
    ACCESSIBILITY: FOCUS INDICATORS (WCAG 2.4.7)
    ========================================================================== */
 
-/* Global focus-visible styles for keyboard navigation */
+/* Global focus-visible styles for keyboard navigation
+   Uses --focus-outline-color which is inherited - set to white on dark backgrounds */
 :focus-visible {
-  outline: 2px solid var(--primary-navy);
+  outline: 2px solid var(--focus-outline-color);
   outline-offset: 2px;
 }
 
@@ -857,13 +860,13 @@ input:focus-visible,
 select:focus-visible,
 textarea:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid var(--primary-navy);
+  outline: 2px solid var(--focus-outline-color);
   outline-offset: 2px;
 }
 
 /* Cards and interactive containers */
 .card:focus-visible {
-  outline: 2px solid var(--primary-navy);
+  outline: 2px solid var(--focus-outline-color);
   outline-offset: 4px;
   transform: translateY(-4px);
   box-shadow: 0 12px 24px rgba(0,0,0,0.08);
@@ -874,7 +877,7 @@ textarea:focus-visible,
 #reset-btn:focus-visible,
 .sort-options .option:focus-visible,
 .quick-filter-btn:focus-visible {
-  outline: 2px solid var(--primary-navy);
+  outline: 2px solid var(--focus-outline-color);
   outline-offset: 2px;
   background-color: var(--hover-background);
 }
@@ -882,42 +885,57 @@ textarea:focus-visible,
 /* Dropdown triggers */
 .selectBox:focus-visible,
 .dropdown-header:focus-visible {
-  outline: 2px solid var(--primary-navy);
+  outline: 2px solid var(--focus-outline-color);
   outline-offset: 2px;
 }
 
 /* Toggle switches - highlight the container */
 .switch input:focus-visible + .slider {
-  outline: 2px solid var(--primary-navy);
+  outline: 2px solid var(--focus-outline-color);
   outline-offset: 2px;
 }
 
 /* Checkbox labels when checkbox is focused */
 .checkbox-list input[type="checkbox"]:focus-visible {
-  outline: 2px solid var(--primary-navy);
+  outline: 2px solid var(--focus-outline-color);
   outline-offset: 2px;
 }
 
-/* Header elements on dark background need light focus indicators */
-.header a:focus-visible,
-.header button:focus-visible,
-.header [tabindex]:focus-visible,
-.header-nav a:focus-visible,
-.header-menu a:focus-visible,
-.header-actions a:focus-visible,
-.header-menu-actions-action:focus-visible,
-[data-section-theme="dark"] a:focus-visible,
-[data-section-theme="dark"] button:focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: 2px;
+/* --------------------------------------------------------------------------
+   DARK BACKGROUND FOCUS OVERRIDE
+   Set --focus-outline-color to white on navy/dark backgrounds.
+   Children inherit this, so focused elements inside get white outlines.
+   -------------------------------------------------------------------------- */
+
+/* Squarespace header and footer (typically navy) */
+.header,
+.footer,
+[class*="header"],
+[class*="footer"] {
+  --focus-outline-color: #ffffff;
 }
 
-/* Footer on dark background also needs light focus */
-.footer a:focus-visible,
-.footer button:focus-visible,
-[class*="footer"] a:focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: 2px;
+/* Squarespace dark theme sections */
+[data-section-theme="dark"],
+[data-section-theme="black"] {
+  --focus-outline-color: #ffffff;
+}
+
+/* Elements with navy background (inline style or class) */
+[style*="background"][style*="172436"],
+[style*="background"][style*="#172436"],
+[style*="background-color"][style*="172436"],
+[style*="background-color"][style*="#172436"] {
+  --focus-outline-color: #ffffff;
+}
+
+/* Common dark background classes - add more as needed */
+.bg-navy,
+.dark-bg,
+.navy-bg,
+.section-dark,
+.tour-quick-details-bar {
+  --focus-outline-color: #ffffff;
 }
 
 /* ==========================================================================
