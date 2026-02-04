@@ -26,6 +26,83 @@
 }
 
 /* ==========================================================================
+   BUTTON SYSTEM
+   Reusable button classes for consistent styling across pages.
+   Note: These do NOT conflict with Squarespace's native button classes
+   (.sqs-button-element--primary, .sqs-button-element--secondary, etc.)
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 40px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  border: 2.9px solid #DE5700;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background-color: #DE5700;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #B64800;
+  border-color: #B64800;
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: #fff;
+  color: #DE5700;
+}
+
+.btn-secondary:hover {
+  background-color: #FCF0E8;
+  border-color: #DE5700;
+  color: #B64800;
+}
+
+/* Light orange variant (matches homepage section-1 secondary button) */
+.btn-secondary-light {
+  background-color: #FCF0E8;
+  color: #DE5700;
+}
+
+.btn-secondary-light:hover {
+  background-color: #F9E0D1;
+  border-color: #F9E0D1;
+  color: #B64800;
+}
+
+/* Focus states for accessibility */
+.btn:focus-visible {
+  outline: 2px solid var(--primary-navy);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}
+
+/* Mobile: full-width buttons */
+@media (max-width: 767px) {
+  .btn-full-mobile {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
    LIGHTBOX OVERLAY
    ========================================================================== */
 .lightbox-overlay {
