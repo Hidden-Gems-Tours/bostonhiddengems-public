@@ -99,10 +99,12 @@
     display: grid;
     grid-auto-flow: row;
     grid-auto-columns: auto;
+    justify-items: center;
   }
 
   .btn-row .btn {
     width: 100%;
+    max-width: 280px;
   }
 }
 
