@@ -191,14 +191,25 @@
 }
 
 .section-title {
-  font-size: 28px;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 400;
   color: #fff;
+  background-color: #172436;
   margin: 0 auto 25px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid var(--guide-bg-highlight);
+  padding: 20px;
+  border-radius: 20px;
   text-align: center;
-  display: table;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.section-title .material-symbols-sharp {
+  vertical-align: middle;
+  color: #fff;
+  font-size: 24px;
 }
 
 .section-content {
@@ -237,9 +248,10 @@
 
 .category-title {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 400;
   color: #333;
   margin: 0 0 18px 0;
+  text-align: center;
 }
 
 .attraction-list {
@@ -321,9 +333,10 @@
 
 .tier-title {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 400;
   color: #333;
   margin: 0 0 18px 0;
+  text-align: center;
 }
 
 .restaurant-list {
