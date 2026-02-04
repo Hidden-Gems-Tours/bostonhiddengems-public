@@ -97,12 +97,25 @@
 }
 
 .at-a-glance-title {
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #666;
-  margin: 0 0 15px 0;
+  font-size: 24px;
+  font-weight: 400;
+  color: #fff;
+  background-color: #172436;
+  margin: 0 auto 20px;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.at-a-glance-title .material-symbols-sharp {
+  vertical-align: middle;
+  color: #fff;
+  font-size: 24px;
 }
 
 .at-a-glance-list {
@@ -115,6 +128,7 @@
 .at-a-glance-item {
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 .at-a-glance-item dt {
@@ -225,6 +239,61 @@
   margin-bottom: 0;
 }
 
+/* Visual Accent Blocks (for character and history sections) */
+.visual-accent-block {
+  background: linear-gradient(135deg, #eaeff6 0%, #f7f9fc 100%);
+  border-radius: var(--guide-card-radius);
+  padding: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  border-left: 4px solid #7CAEF4;
+  border-right: 4px solid #7CAEF4;
+}
+
+.accent-icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.accent-quote {
+  font-size: 20px;
+  font-style: italic;
+  color: #333;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Timeline accent for history section */
+.timeline-accent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 25px 20px;
+}
+
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 120px;
+}
+
+.timeline-year {
+  font-size: 22px;
+  font-weight: 700;
+  color: #172436;
+  margin-bottom: 5px;
+}
+
+.timeline-event {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.3;
+}
+
 /* ==========================================================================
    SECTION 2 & 3: CHARACTER & HISTORY
    ========================================================================== */
@@ -247,8 +316,8 @@
 }
 
 .category-title {
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 22px;
+  font-weight: 600;
   color: #333;
   margin: 0 0 18px 0;
   text-align: center;
@@ -332,8 +401,8 @@
 }
 
 .tier-title {
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 22px;
+  font-weight: 600;
   color: #333;
   margin: 0 0 18px 0;
   text-align: center;
@@ -552,9 +621,11 @@
   background: #fff;
   border-radius: 12px;
   padding: 20px;
-  text-align: left;
+  text-align: center;
   border: 1px solid var(--guide-border-color);
   transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
 }
 
 .tour-card-mini:hover {
@@ -574,10 +645,12 @@
   color: #666;
   margin: 0 0 12px 0;
   line-height: 1.5;
+  flex-grow: 1;
 }
 
 .tour-card-meta {
   display: flex;
+  justify-content: center;
   gap: 15px;
   margin-bottom: 15px;
   font-size: 13px;
@@ -659,9 +732,48 @@
     padding: 20px;
   }
 
+  .at-a-glance-title {
+    font-size: 20px;
+    padding: 15px;
+    max-width: 250px;
+  }
+
   .at-a-glance-list {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+
+  .visual-accent-block {
+    padding: 20px;
+    margin-bottom: 25px;
+  }
+
+  .accent-icon {
+    font-size: 36px;
+  }
+
+  .accent-quote {
+    font-size: 17px;
+  }
+
+  .timeline-accent {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .timeline-item {
+    flex-direction: row;
+    gap: 12px;
+    min-width: auto;
+  }
+
+  .timeline-year {
+    font-size: 18px;
+    min-width: 60px;
+  }
+
+  .timeline-event {
+    text-align: left;
   }
 
   .guide-nav {
