@@ -1,0 +1,762 @@
+/**
+ * Neighborhood & City Guide Styles
+ * Boston Hidden Gems
+ *
+ * Purpose: All styling for neighborhood and city guide pages
+ * Used by: All pages in /neighborhood-guides/ and /city-guides/
+ *
+ * Loaded via jsDelivr CDN from GitHub repository.
+ */
+
+/* ==========================================================================
+   CSS CUSTOM PROPERTIES (Extending global design system)
+   ========================================================================== */
+:root {
+  /* Guide-specific tokens */
+  --guide-max-width: 900px;
+  --guide-section-spacing: 60px;
+  --guide-card-radius: 16px;
+  --guide-bg-light: #f7f9fc;
+  --guide-bg-highlight: #eaeff6;
+  --guide-border-color: #cdd3da;
+
+  /* Price indicator colors */
+  --price-budget: #2d8a3e;
+  --price-moderate: #7c6c00;
+  --price-upscale: #8b4513;
+
+  /* Inherited from global-styles.css */
+  /* --primary-navy: #172436 */
+  /* --star-gold: #FFD700 */
+}
+
+/* ==========================================================================
+   MAIN GUIDE CONTAINER
+   ========================================================================== */
+.neighborhood-guide {
+  max-width: var(--guide-max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+  font-family: "Aktiv Grotesk", system-ui, -apple-system, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   SECTION 1: HERO + AT A GLANCE
+   ========================================================================== */
+.guide-hero {
+  margin-bottom: var(--guide-section-spacing);
+}
+
+.hero-image-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  border-radius: var(--guide-card-radius);
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px 30px 30px;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%);
+  color: #fff;
+}
+
+.hero-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0 0 5px 0;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* At A Glance Box */
+.at-a-glance {
+  background: var(--guide-bg-highlight);
+  border-radius: var(--guide-card-radius);
+  padding: 25px 30px;
+}
+
+.at-a-glance-title {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #666;
+  margin: 0 0 15px 0;
+}
+
+.at-a-glance-list {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.at-a-glance-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.at-a-glance-item dt {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.at-a-glance-item dd {
+  margin: 0;
+  font-size: 15px;
+  color: #333;
+}
+
+/* ==========================================================================
+   NAVIGATION ANCHORS
+   ========================================================================== */
+.guide-nav {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border-bottom: 1px solid var(--guide-border-color);
+  margin: 0 -20px 40px;
+  padding: 0 20px;
+  z-index: 100;
+}
+
+.guide-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+.guide-nav-list::-webkit-scrollbar {
+  display: none;
+}
+
+.guide-nav-list li {
+  flex-shrink: 0;
+}
+
+.guide-nav-list a {
+  display: block;
+  padding: 15px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.guide-nav-list a:hover,
+.guide-nav-list a:focus {
+  color: var(--primary-navy, #172436);
+  border-bottom-color: var(--primary-navy, #172436);
+}
+
+/* ==========================================================================
+   GUIDE SECTIONS (Common Styles)
+   ========================================================================== */
+.guide-section {
+  margin-bottom: var(--guide-section-spacing);
+  scroll-margin-top: 80px; /* Account for sticky nav */
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-navy, #172436);
+  margin: 0 0 25px 0;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--guide-bg-highlight);
+}
+
+.section-content {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.section-content p {
+  margin: 0 0 18px 0;
+}
+
+.section-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   SECTION 2 & 3: CHARACTER & HISTORY
+   ========================================================================== */
+.guide-section.character .section-content,
+.guide-section.history .section-content {
+  max-width: 700px;
+}
+
+/* ==========================================================================
+   SECTION 4: THINGS TO SEE & DO
+   ========================================================================== */
+.attraction-category {
+  margin-bottom: 35px;
+}
+
+.attraction-category:last-of-type {
+  margin-bottom: 0;
+}
+
+.category-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 18px 0;
+}
+
+.attraction-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.attraction-item {
+  padding: 18px 20px;
+  background: var(--guide-bg-light);
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.attraction-item:last-child {
+  margin-bottom: 0;
+}
+
+.attraction-header {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.attraction-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+}
+
+.attraction-meta {
+  font-size: 13px;
+  color: #888;
+  font-style: italic;
+}
+
+.attraction-description {
+  margin: 0;
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Tour Callout (woven into content) */
+.tour-callout {
+  background: linear-gradient(135deg, #d6e5fc 0%, #eaeff6 100%);
+  border-radius: var(--guide-card-radius);
+  padding: 25px 30px;
+  margin: 30px 0;
+  border-left: 4px solid #7CAEF4;
+}
+
+.tour-callout-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-navy, #172436);
+  margin: 0 0 10px 0;
+}
+
+.tour-callout-text {
+  margin: 0 0 15px 0;
+  color: #444;
+}
+
+/* ==========================================================================
+   SECTION 5: WHERE TO EAT & DRINK
+   ========================================================================== */
+.dining-tier {
+  margin-bottom: 35px;
+}
+
+.dining-tier:last-child {
+  margin-bottom: 0;
+}
+
+.tier-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 18px 0;
+}
+
+.restaurant-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.restaurant-item {
+  padding: 18px 20px;
+  background: var(--guide-bg-light);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.restaurant-item:last-child {
+  margin-bottom: 0;
+}
+
+.restaurant-item.our-pick {
+  background: linear-gradient(135deg, #fff9e6 0%, var(--guide-bg-light) 100%);
+  border: 1px solid #e6d49c;
+}
+
+.restaurant-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.restaurant-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+}
+
+.our-pick-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: #8b6914;
+  background: #fff3c4;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.price-indicator {
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: auto;
+}
+
+.price-indicator[title="Budget-friendly"] {
+  color: var(--price-budget);
+}
+
+.price-indicator[title="Moderate"] {
+  color: var(--price-moderate);
+}
+
+.price-indicator[title="Upscale"],
+.price-indicator[title="Special occasion"] {
+  color: var(--price-upscale);
+}
+
+.cuisine-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #666;
+  background: #e8ecf0;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.restaurant-description {
+  margin: 0;
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   SECTION 6: INSIDER TIPS
+   ========================================================================== */
+.tips-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tip-item {
+  padding: 20px 25px;
+  background: var(--guide-bg-light);
+  border-radius: 12px;
+  margin-bottom: 15px;
+  border-left: 4px solid #DE5700;
+}
+
+.tip-item:last-child {
+  margin-bottom: 0;
+}
+
+.tip-title {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.tip-text {
+  margin: 0;
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   SECTION 7: GETTING AROUND
+   ========================================================================== */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.info-card {
+  background: var(--guide-bg-light);
+  border-radius: 12px;
+  padding: 22px 25px;
+}
+
+.info-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-icon {
+  font-size: 20px;
+}
+
+.info-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   SECTION 8: MAP
+   ========================================================================== */
+.map-section .section-title {
+  margin-bottom: 20px;
+}
+
+.map-container {
+  border-radius: var(--guide-card-radius);
+  overflow: hidden;
+  border: 1px solid var(--guide-border-color);
+}
+
+.map-container iframe {
+  display: block;
+  width: 100%;
+  height: 450px;
+}
+
+/* ==========================================================================
+   SECTION 9: EXPLORE CTA
+   ========================================================================== */
+.explore-cta {
+  background: var(--guide-bg-highlight);
+  border-radius: var(--guide-card-radius);
+  padding: 40px;
+  text-align: center;
+}
+
+.explore-cta .section-title {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 15px;
+}
+
+.cta-intro {
+  font-size: 17px;
+  color: #555;
+  margin: 0 0 30px 0;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tour-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.tour-card-mini {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: left;
+  border: 1px solid var(--guide-border-color);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tour-card-mini:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.tour-card-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 8px 0;
+}
+
+.tour-card-description {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 12px 0;
+  line-height: 1.5;
+}
+
+.tour-card-meta {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  font-size: 13px;
+  color: #888;
+}
+
+/* ==========================================================================
+   BUTTONS (Scoped to guides - inherits from global-styles.css)
+   ========================================================================== */
+/* Use global .btn, .btn-primary, .btn-secondary styles from global-styles.css */
+
+.neighborhood-guide .cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.neighborhood-guide .tour-callout .btn {
+  margin-top: 5px;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY: FOCUS INDICATORS (Scoped to guides)
+   ========================================================================== */
+.neighborhood-guide .guide-nav-list a:focus-visible,
+.neighborhood-guide .tour-card-mini:focus-visible {
+  outline: 2px solid var(--focus-outline-color, #172436);
+  outline-offset: 3px;
+}
+
+.tip-item:focus-within,
+.attraction-item:focus-within,
+.restaurant-item:focus-within {
+  outline: 2px solid var(--focus-outline-color, #172436);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY: REDUCED MOTION (Scoped to guides)
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .neighborhood-guide .guide-nav-list a,
+  .neighborhood-guide .tour-card-mini {
+    transition: none;
+  }
+
+  .neighborhood-guide .tour-card-mini:hover {
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVE (max-width: 767px)
+   ========================================================================== */
+@media only screen and (max-width: 767px) {
+  .neighborhood-guide {
+    padding: 0 15px;
+  }
+
+  .hero-image-container {
+    height: 280px;
+    margin-bottom: 20px;
+  }
+
+  .hero-overlay {
+    padding: 30px 20px 20px;
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+  }
+
+  .at-a-glance {
+    padding: 20px;
+  }
+
+  .at-a-glance-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .guide-nav {
+    margin: 0 -15px 30px;
+    padding: 0 15px;
+  }
+
+  .guide-nav-list {
+    gap: 4px;
+  }
+
+  .guide-nav-list a {
+    padding: 12px 12px;
+    font-size: 13px;
+  }
+
+  .guide-section {
+    margin-bottom: 45px;
+  }
+
+  .section-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .category-title,
+  .tier-title {
+    font-size: 18px;
+  }
+
+  .attraction-item,
+  .restaurant-item,
+  .tip-item,
+  .info-card {
+    padding: 15px 18px;
+  }
+
+  .tour-callout {
+    padding: 20px;
+    margin: 25px 0;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .map-container iframe {
+    height: 350px;
+  }
+
+  .explore-cta {
+    padding: 30px 20px;
+  }
+
+  .tour-cards {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .neighborhood-guide .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* ==========================================================================
+   TABLET ADJUSTMENTS (768px - 1024px)
+   ========================================================================== */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .hero-image-container {
+    height: 350px;
+  }
+
+  .at-a-glance-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tour-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+@media print {
+  .guide-nav,
+  .explore-cta,
+  .tour-callout,
+  .map-section {
+    display: none;
+  }
+
+  .neighborhood-guide {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .hero-image-container {
+    height: auto;
+    border-radius: 0;
+  }
+
+  .section-title {
+    page-break-after: avoid;
+  }
+
+  .attraction-item,
+  .restaurant-item,
+  .tip-item {
+    page-break-inside: avoid;
+  }
+}
