@@ -884,6 +884,247 @@ html {
 }
 
 /* ==========================================================================
+   LEAFLET INTERACTIVE MAP
+   ========================================================================== */
+
+/* Map container - replaces static Google Maps iframe */
+.leaflet-map-container {
+  width: 100%;
+  height: 450px;
+  border-radius: var(--guide-card-radius);
+  overflow: hidden;
+  border: 1px solid var(--guide-border-color);
+  z-index: 1; /* Below sticky nav */
+}
+
+/* Custom marker container (removes default Leaflet styles) */
+.guide-map-marker-container {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Marker pin shape */
+.guide-map-marker {
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.guide-map-marker:hover {
+  transform: rotate(-45deg) scale(1.1) !important;
+}
+
+/* Highlighted marker shadow */
+.marker-shadow-highlighted {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 0 0 4px rgba(124, 174, 244, 0.3) !important;
+}
+
+/* Custom popup styling */
+.guide-map-popup .leaflet-popup-content-wrapper {
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.guide-map-popup .leaflet-popup-content {
+  margin: 0;
+  width: 260px !important;
+}
+
+.guide-map-popup .leaflet-popup-tip {
+  background: #fff;
+}
+
+.guide-popup-content {
+  padding: 16px 18px;
+}
+
+.guide-popup-content .popup-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.guide-popup-content .popup-icon {
+  font-size: 18px;
+  color: #172436;
+}
+
+.guide-popup-content .popup-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  flex: 1;
+}
+
+.guide-popup-content .popup-our-pick {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: #8b6914;
+  background: #fff3c4;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.guide-popup-content .popup-description {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0 0 12px 0;
+}
+
+.guide-popup-content .popup-scroll-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  background: #172436;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.guide-popup-content .popup-scroll-btn:hover {
+  background: #2a3d52;
+}
+
+.guide-popup-content .popup-scroll-btn .material-symbols-sharp {
+  font-size: 16px;
+}
+
+/* List item highlight when clicked from map */
+.restaurant-item.map-highlight,
+.attraction-item.map-highlight {
+  animation: mapHighlightPulse 0.5s ease-out 3;
+  outline: 2px solid #7CAEF4;
+  outline-offset: 2px;
+}
+
+@keyframes mapHighlightPulse {
+  0%, 100% {
+    background-color: var(--guide-bg-light);
+  }
+  50% {
+    background-color: #d6e5fc;
+  }
+}
+
+/* Our pick items keep their gradient during highlight */
+.restaurant-item.our-pick.map-highlight {
+  animation: mapHighlightPulseOurPick 0.5s ease-out 3;
+}
+
+@keyframes mapHighlightPulseOurPick {
+  0%, 100% {
+    background: linear-gradient(135deg, #fff9e6 0%, var(--guide-bg-light) 100%);
+  }
+  50% {
+    background: linear-gradient(135deg, #fff3c4 0%, #d6e5fc 100%);
+  }
+}
+
+/* Clickable list items cursor */
+.restaurant-item[data-map-id],
+.attraction-item[data-map-id] {
+  cursor: pointer;
+  transition: background-color 0.2s, outline 0.2s;
+}
+
+.restaurant-item[data-map-id]:hover,
+.attraction-item[data-map-id]:hover {
+  background-color: #eaeff6;
+}
+
+.restaurant-item.our-pick[data-map-id]:hover {
+  background: linear-gradient(135deg, #fff3c4 0%, #eaeff6 100%);
+}
+
+/* Map legend */
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 15px;
+  padding: 12px 15px;
+  background: var(--guide-bg-light);
+  border-radius: 8px;
+  font-size: 13px;
+  color: #555;
+}
+
+.map-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.map-legend-marker {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.map-legend-marker.attraction {
+  background-color: #172436;
+}
+
+.map-legend-marker.restaurant {
+  background-color: #7CAEF4;
+}
+
+.map-legend-marker.our-pick {
+  background-color: #DE5700;
+}
+
+/* Mobile responsive */
+@media only screen and (max-width: 767px) {
+  .leaflet-map-container {
+    height: 350px;
+  }
+
+  .guide-map-popup .leaflet-popup-content {
+    width: 240px !important;
+  }
+
+  .guide-popup-content {
+    padding: 14px 16px;
+  }
+
+  .guide-popup-content .popup-name {
+    font-size: 15px;
+  }
+
+  .map-legend {
+    gap: 10px;
+    font-size: 12px;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .guide-map-marker {
+    transition: none;
+  }
+
+  .restaurant-item.map-highlight,
+  .attraction-item.map-highlight,
+  .restaurant-item.our-pick.map-highlight {
+    animation: none;
+    background-color: #d6e5fc;
+  }
+}
+
+/* ==========================================================================
    PRINT STYLES
    ========================================================================== */
 @media print {
