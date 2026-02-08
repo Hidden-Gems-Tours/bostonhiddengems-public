@@ -361,7 +361,7 @@ function renderTourCards(containerId, options = {}) {
         </div>`;
     }
 
-    const featuredBadgeHTML = tour.ranking <= 3 ? '<span class="featured-badge">Featured</span>' : '';
+    const featuredBadgeHTML = tour.ranking <= 3 ? '<span class="featured-badge"><span class="material-symbols-sharp" aria-hidden="true">workspace_premium</span> Featured</span>' : '';
 
     card.innerHTML = `
       <div class="card-image-cont">
