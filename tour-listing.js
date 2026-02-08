@@ -361,8 +361,11 @@ function renderTourCards(containerId, options = {}) {
         </div>`;
     }
 
+    const featuredBadgeHTML = tour.ranking <= 3 ? '<span class="featured-badge">Featured</span>' : '';
+
     card.innerHTML = `
       <div class="card-image-cont">
+        ${featuredBadgeHTML}
         <img src="${tour.image}" alt="${tour.imgAlt}" style="${tour.imgStyle}" loading="lazy">
       </div>
       <div class="card-content">
