@@ -362,7 +362,7 @@ function renderTourCards(containerId, options = {}) {
     }
 
     const featuredBadgeHTML = tour.ranking <= 3 ? '<span class="featured-badge"><span class="material-symbols-sharp" aria-hidden="true">workspace_premium</span> Featured</span>' : '';
-    const teamFavBadgeHTML = tour.teamFavorite ? '<span class="team-fav-badge"><img src="https://images.squarespace-cdn.com/content/62db227779f36e51d2786802/1694148041368-KN5HSPUCITLWUYHXUYIA/BHG_Logo_ctr.png" alt="" aria-hidden="true" width="16" height="16" /> Team Favorite</span>' : '';
+    const teamFavBadgeHTML = tour.teamFavorite ? '<span class="team-fav-badge"><img src="https://images.squarespace-cdn.com/content/62db227779f36e51d2786802/1694148041368-KN5HSPUCITLWUYHXUYIA/BHG_Logo_ctr.png" alt="" aria-hidden="true" width="14" height="14" /> Team Favorite</span>' : '';
 
     card.innerHTML = `
       <div class="card-image-cont">
