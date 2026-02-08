@@ -278,6 +278,34 @@
   font-size: 14px;
 }
 
+/* --- TEAM FAVORITE BADGE --- */
+.team-fav-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: #1a4a7a;
+  background: #dceaf9;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.team-fav-badge img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  border-radius: 2px;
+}
+.featured-badge + .team-fav-badge {
+  top: 38px;
+}
+
 /* --- CARD IMAGE CONTAINER --- */
 .card-image-cont {
   width: 100%;
