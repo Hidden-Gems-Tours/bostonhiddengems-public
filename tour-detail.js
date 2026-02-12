@@ -277,6 +277,68 @@ function initImageAccessibility() {
 }
 
 /**
+ * Initialize Leaflet pickup radius map
+ * Requires Leaflet CSS/JS loaded globally via header-script.html
+ * @param {Object} options - Configuration object
+ * @param {number} [options.radiusMeters=5150] - Pickup radius in meters (5150 = 3.2mi private, 2575 = 1.6mi semiprivate)
+ * @param {number[]} [options.center=[42.367069, -71.05655]] - Map center [lat, lng]
+ * @param {string} [options.containerId='pickup-area-map'] - Container element ID
+ */
+function initPickupAreaMap(options) {
+  var opts = options || {};
+  var center = opts.center || [42.367069, -71.05655];
+  var radius = opts.radiusMeters || 5150;
+  var containerId = opts.containerId || 'pickup-area-map';
+
+  var container = document.getElementById(containerId);
+  if (!container || typeof L === 'undefined') return;
+
+  var map = L.map(containerId, {
+    center: center,
+    zoom: 12,
+    scrollWheelZoom: false,
+    zoomControl: true,
+    attributionControl: true,
+  });
+
+  L.tileLayer(
+    'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+    {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 20,
+    }
+  ).addTo(map);
+
+  var circle = L.circle(center, {
+    radius: radius,
+    color: '#7CAEF4',
+    weight: 2,
+    opacity: 0.8,
+    fillColor: '#7CAEF4',
+    fillOpacity: 0.12,
+    interactive: false,
+  }).addTo(map);
+
+  map.fitBounds(circle.getBounds(), { padding: [0, 0] });
+  map.setZoom(map.getZoom());
+
+  L.circleMarker(center, {
+    radius: 6,
+    color: '#172436',
+    fillColor: '#DE5700',
+    fillOpacity: 1,
+    weight: 2,
+    interactive: false,
+  }).addTo(map);
+
+  setTimeout(function () {
+    map.invalidateSize();
+  }, 200);
+}
+
+/**
  * Initialize a tour detail page with all functionality
  * @param {Object} config - Configuration object
  * @param {string} config.tourSku - The SKU of the current tour
