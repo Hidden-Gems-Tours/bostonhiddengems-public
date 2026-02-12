@@ -277,6 +277,58 @@ function initImageAccessibility() {
 }
 
 /**
+ * Initialize Leaflet meeting point map with a pin marker
+ * For tours with a fixed meeting location (walking tours, group tours)
+ * Requires Leaflet CSS/JS loaded globally via header-script.html
+ * @param {Object} options - Configuration object
+ * @param {number[]} options.center - Map center [lat, lng] (required)
+ * @param {number} [options.zoom=16] - Zoom level
+ * @param {string} [options.containerId='pickup-area-map'] - Container element ID
+ */
+function initMeetingPointMap(options) {
+  var opts = options || {};
+  var center = opts.center;
+  var zoom = opts.zoom || 16;
+  var containerId = opts.containerId || 'pickup-area-map';
+
+  var container = document.getElementById(containerId);
+  if (!container || typeof L === 'undefined' || !center) return;
+
+  var map = L.map(containerId, {
+    center: center,
+    zoom: zoom,
+    scrollWheelZoom: false,
+    zoomControl: true,
+    attributionControl: true,
+  });
+
+  L.tileLayer(
+    'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+    {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 20,
+    }
+  ).addTo(map);
+
+  L.marker(center, {
+    icon: L.icon({
+      iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+      iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      shadowSize: [41, 41],
+    }),
+  }).addTo(map);
+
+  setTimeout(function () {
+    map.invalidateSize();
+  }, 200);
+}
+
+/**
  * Initialize Leaflet pickup radius map
  * Requires Leaflet CSS/JS loaded globally via header-script.html
  * @param {Object} options - Configuration object
