@@ -391,16 +391,90 @@ function initPickupAreaMap(options) {
 }
 
 /**
+ * Render the Meeting Point section dynamically
+ * Replaces static HTML with JS-rendered content for easier maintenance.
+ * SEO/AIO impact mitigated by adding location data to schema.json-ld.
+ * @param {Object} meetingPoint - Meeting point configuration
+ * @param {string} meetingPoint.type - "pickup-radius" or "pin"
+ * @param {number[]} [meetingPoint.center] - Map center [lat, lng]
+ * @param {number} [meetingPoint.radiusMeters=5150] - Pickup radius (pickup-radius only)
+ * @param {string} [meetingPoint.locationName] - Location name (required for pin type)
+ * @param {string} [meetingPoint.ariaLabel] - Custom aria-label for map
+ * @param {string|null} [meetingPoint.disclaimerHtml] - Custom disclaimer HTML (null to suppress)
+ */
+function renderMeetingPointSection(meetingPoint) {
+  if (!meetingPoint) return;
+
+  var container = document.getElementById('meeting-point-container');
+  if (!container) return;
+
+  // Build aria-label
+  var ariaLabel = meetingPoint.ariaLabel;
+  if (!ariaLabel) {
+    if (meetingPoint.type === 'pin' && meetingPoint.locationName) {
+      ariaLabel = 'Map showing meeting point at ' + meetingPoint.locationName;
+    } else {
+      ariaLabel = 'Map showing pickup radius in Greater Boston area';
+    }
+  }
+
+  // Build disclaimer HTML
+  var disclaimerHtml = '';
+  if (meetingPoint.disclaimerHtml !== undefined && meetingPoint.disclaimerHtml !== null) {
+    disclaimerHtml = '<p style="text-align: center">' + meetingPoint.disclaimerHtml + '</p>';
+  } else if (meetingPoint.type === 'pickup-radius') {
+    disclaimerHtml = '<p style="text-align: center">' +
+      'Pickup is included within this range, covering Boston, Cambridge, and Somerville. ' +
+      'An additional fee applies for Boston Logan Airport and Boston Flynn Cruiseport. ' +
+      'We may also be able to accommodate pickups outside this area for an extra fee. ' +
+      '<a href="/contact" target="_blank" rel="noopener noreferrer" class="underline">' +
+      'Contact us for details!</a></p>';
+  } else if (meetingPoint.type === 'pin' && meetingPoint.locationName) {
+    disclaimerHtml = '<p style="text-align: center">Meet your guide at ' +
+      meetingPoint.locationName + '.</p>';
+  }
+
+  // Build section HTML
+  container.innerHTML =
+    '<section class="tour-meeting-section" id="pickup">' +
+      '<h2 class="section-title">' +
+        '<span class="material-symbols-sharp">pin_drop</span>Meeting Point' +
+      '</h2>' +
+      disclaimerHtml +
+      '<div class="meeting-point-map">' +
+        '<div id="pickup-area-map" role="img" aria-label="' + ariaLabel + '" ' +
+          'style="width: 100%; height: 400px; border-radius: 10px; border: 1px solid #cdd3da; overflow: hidden;">' +
+        '</div>' +
+      '</div>' +
+      '<div class="cta-divider">' +
+        '<a href="#booking" class="btn-primary">Check Availability</a>' +
+      '</div>' +
+    '</section>';
+
+  // Initialize the appropriate map
+  if (meetingPoint.type === 'pickup-radius') {
+    initPickupAreaMap({
+      radiusMeters: meetingPoint.radiusMeters,
+      center: meetingPoint.center
+    });
+  } else if (meetingPoint.type === 'pin' && meetingPoint.center) {
+    initMeetingPointMap({ center: meetingPoint.center });
+  }
+}
+
+/**
  * Initialize a tour detail page with all functionality
  * @param {Object} config - Configuration object
  * @param {string} config.tourSku - The SKU of the current tour
  * @param {number} config.hiddenStopsCount - Number of hidden itinerary stops
+ * @param {Object} [config.meetingPoint] - Meeting point configuration (see renderMeetingPointSection)
  */
 function initTourDetailPage(config) {
   var tourSku = config.tourSku;
   var hiddenStopsCount = config.hiddenStopsCount;
 
   function init() {
+    renderMeetingPointSection(config.meetingPoint);
     initRelatedTours(tourSku);
     updateTourData(tourSku);
     setupSmoothScroll();
