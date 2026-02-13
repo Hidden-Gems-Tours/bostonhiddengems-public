@@ -424,7 +424,7 @@ function renderMeetingPointSection(meetingPoint) {
     disclaimerHtml = '<p style="text-align: center">' + meetingPoint.disclaimerHtml + '</p>';
   } else if (meetingPoint.type === 'pickup-radius') {
     disclaimerHtml = '<p style="text-align: center">' +
-      'Pickup is included within this range, covering Boston, Cambridge, and Somerville. ' +
+      'Pickup is included within this range, covering Boston, Cambridge, Somerville, and Chelsea. ' +
       'An additional fee applies for Boston Logan Airport and Boston Flynn Cruiseport. ' +
       'We may also be able to accommodate pickups outside this area for an extra fee. ' +
       '<a href="/contact" target="_blank" rel="noopener noreferrer" class="underline">' +
