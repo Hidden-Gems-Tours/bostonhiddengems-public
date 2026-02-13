@@ -312,6 +312,37 @@
   top: 38px;
 }
 
+/* --- SEASONAL BADGE --- */
+.seasonal-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: #1a6847;
+  background: #d4edda;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.seasonal-badge .material-symbols-sharp {
+  font-size: 14px;
+}
+.featured-badge + .seasonal-badge {
+  top: 38px;
+}
+.team-fav-badge + .seasonal-badge {
+  top: 38px;
+}
+.featured-badge + .team-fav-badge + .seasonal-badge {
+  top: 66px;
+}
+
 /* --- CARD IMAGE CONTAINER --- */
 .card-image-cont {
   width: 100%;
