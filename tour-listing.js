@@ -352,6 +352,7 @@ function renderTourCards(containerId, options = {}) {
             <span class="material-symbols-sharp" aria-hidden="true">person</span> ${tour.guestMin}-${tour.guestMax}
             <br>
             <span style="font-weight:bold;">${tourPrice}</span>
+            ${(tour.status.isActive && !tour.status.isCurrentlyRunning) ? '<br><span class="seasonal-label">Seasonal Tour</span>' : ''}
           </div>`;
       }
     } else {
@@ -363,11 +364,10 @@ function renderTourCards(containerId, options = {}) {
 
     const featuredBadgeHTML = tour.ranking <= 3 ? '<span class="featured-badge"><span class="material-symbols-sharp" aria-hidden="true">workspace_premium</span> Featured</span>' : '';
     const teamFavBadgeHTML = tour.teamFavorite ? '<span class="team-fav-badge"><img src="https://images.squarespace-cdn.com/content/62db227779f36e51d2786802/1694148041368-KN5HSPUCITLWUYHXUYIA/BHG_Logo_ctr.png" alt="" aria-hidden="true" width="14" height="14" /> Team Favorite</span>' : '';
-    const seasonalBadgeHTML = (tour.status.isActive && !tour.status.isCurrentlyRunning) ? '<span class="seasonal-badge"><span class="material-symbols-sharp" aria-hidden="true">event</span> Seasonal</span>' : '';
 
     card.innerHTML = `
       <div class="card-image-cont">
-        ${featuredBadgeHTML}${teamFavBadgeHTML}${seasonalBadgeHTML}
+        ${featuredBadgeHTML}${teamFavBadgeHTML}
         <img src="${tour.image}" alt="${tour.imgAlt}" style="${tour.imgStyle}" loading="lazy">
       </div>
       <div class="card-content">
