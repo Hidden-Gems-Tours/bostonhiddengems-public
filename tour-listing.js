@@ -351,8 +351,7 @@ function renderTourCards(containerId, options = {}) {
             <span class="material-symbols-sharp" aria-hidden="true">timer</span> ${durationDisplay}&ensp;•&thinsp;
             <span class="material-symbols-sharp" aria-hidden="true">person</span> ${tour.guestMin}-${tour.guestMax}
             <br>
-            <span style="font-weight:bold;">${tourPrice}</span>
-            ${(tour.status.isActive && !tour.status.isCurrentlyRunning) ? '<br><span class="seasonal-label">Seasonal Tour</span>' : ''}
+            <span style="font-weight:bold;">${tourPrice}</span>${(tour.status.isActive && !tour.status.isCurrentlyRunning) ? '&ensp;•&thinsp;<span class="seasonal-label">Seasonal</span>' : ''}
           </div>`;
       }
     } else {
