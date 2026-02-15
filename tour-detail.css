@@ -954,7 +954,7 @@ button.image-lightbox-trigger img {
   .tour-itinerary-section { order: 2; }
   .tour-whats-included-section { order: 3; }
   .tour-details-section { order: 4; }
-  .tour-meeting-section { order: 5; }
+  .tour-meeting-section, #meeting-point-container { order: 5; }
   .tour-faq-section { order: 6; }
   .tour-reviews-section { order: 7; }
 
