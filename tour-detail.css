@@ -469,7 +469,7 @@
   align-items: center;
 }
 
-.faq-question-wrapper:hover {
+.faq-item .faq-question-wrapper:hover {
   background-color: #f0f2f5;
 }
 
