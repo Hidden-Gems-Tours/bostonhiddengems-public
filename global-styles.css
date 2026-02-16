@@ -228,8 +228,9 @@
 
 /* --- TOUR GRID LAYOUT --- */
 .tour-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 30px;
   margin-top: 20px;
 }
@@ -242,7 +243,8 @@
   border-radius: 20px;
   overflow: hidden;
   max-width: 600px;
-  width: 100%;
+  width: calc((100% - 60px) / 3);
+  min-width: 320px;
   min-height: 480px;
   text-decoration: none;
   color: inherit;
@@ -270,7 +272,7 @@
   text-transform: uppercase;
   letter-spacing: 0.3px;
   color: #8b6914;
-  background: #fff3c4;
+  background: rgba(255, 243, 196, 0.85);
   padding: 4px 10px;
   border-radius: 4px;
 }
@@ -1160,6 +1162,11 @@ body > footer,
    MOBILE RESPONSIVE
    ========================================================================== */
 @media only screen and (max-width: 767px) {
+  .card {
+    width: 100%;
+    min-width: unset;
+  }
+
   .tour-header {
     font-size: 38px;
   }
