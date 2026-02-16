@@ -458,7 +458,7 @@ function openAfterpayModal() {
       <div class="afterpay-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="afterpay-modal-title">
         <div class="afterpay-modal">
           <button type="button" class="afterpay-modal-close" aria-label="Close" onclick="closeAfterpayModal()">&times;</button>
-          <img src="https://cdn.jsdelivr.net/gh/Hidden-Gems-Tours/bostonhiddengems-public@v1.0.49/images/logos/afterpay/afterpay-logo.webp"
+          <img src="${typeof BHG_CDN!=='undefined'?BHG_CDN:''}/images/logos/afterpay/afterpay-logo.webp"
                alt="Afterpay" class="afterpay-modal-logo" width="140" height="34" />
           <h2 id="afterpay-modal-title">Pay in 4 interest-free installments</h2>
           <div class="afterpay-modal-steps">
