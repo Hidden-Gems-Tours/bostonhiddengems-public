@@ -1466,6 +1466,8 @@ body > footer,
   width: auto;
   vertical-align: middle;
   margin-right: 2px;
+  position: relative;
+  top: -2px;
 }
 
 /* --- Afterpay Mobile Responsive --- */
