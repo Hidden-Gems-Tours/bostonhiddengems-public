@@ -1467,7 +1467,23 @@ body > footer,
   vertical-align: middle;
   margin-right: 2px;
   position: relative;
-  top: -1.5px;
+  top: -1.6px;
+}
+
+.afterpay-inline-link .afterpay-info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid #999;
+  font-size: 11px;
+  font-weight: 700;
+  color: #999;
+  position: relative;
+  top: -0.8px;
+  margin-left: 0.5px;
 }
 
 /* --- Afterpay Mobile Responsive --- */
