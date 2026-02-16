@@ -439,3 +439,95 @@ function onToursReady(callback) {
     );
   }
 })();
+
+// ==========================================================================
+// Afterpay Informational Modal
+// Custom lightbox explaining Afterpay "Pay in 4" — no merchant ID required.
+// FareHarbor handles the actual Afterpay checkout.
+// ==========================================================================
+
+let _afterpayModal = null;
+let _afterpayTrigger = null;
+
+function openAfterpayModal() {
+  _afterpayTrigger = document.activeElement;
+
+  if (!_afterpayModal) {
+    const div = document.createElement("div");
+    div.innerHTML = `
+      <div class="afterpay-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="afterpay-modal-title">
+        <div class="afterpay-modal">
+          <button type="button" class="afterpay-modal-close" aria-label="Close" onclick="closeAfterpayModal()">&times;</button>
+          <img src="https://cdn.jsdelivr.net/gh/Hidden-Gems-Tours/bostonhiddengems-public@v1.0.48/images/logos/afterpay/afterpay-logo.webp"
+               alt="Afterpay" class="afterpay-modal-logo" width="140" height="34" />
+          <h2 id="afterpay-modal-title">Pay in 4 interest-free installments</h2>
+          <div class="afterpay-modal-steps">
+            <div class="afterpay-step"><span class="afterpay-step-num">1</span><span class="afterpay-step-label">Today<br /><b>25%</b></span></div>
+            <div class="afterpay-step-divider"></div>
+            <div class="afterpay-step"><span class="afterpay-step-num">2</span><span class="afterpay-step-label">2 wks<br /><b>25%</b></span></div>
+            <div class="afterpay-step-divider"></div>
+            <div class="afterpay-step"><span class="afterpay-step-num">3</span><span class="afterpay-step-label">4 wks<br /><b>25%</b></span></div>
+            <div class="afterpay-step-divider"></div>
+            <div class="afterpay-step"><span class="afterpay-step-num">4</span><span class="afterpay-step-label">6 wks<br /><b>25%</b></span></div>
+          </div>
+          <h3>How it works</h3>
+          <ol class="afterpay-modal-howto">
+            <li>Select <b>Afterpay</b> as your payment method at checkout</li>
+            <li>Your purchase is split into <b>4 equal payments</b>, every 2 weeks</li>
+            <li>No interest or additional fees when you pay on time</li>
+          </ol>
+          <p class="afterpay-modal-disclaimer">You must be over 18 and a resident of the U.S. Late fees may apply. Eligibility is subject to Afterpay's approval. Loans to California residents made or arranged pursuant to a California Finance Lenders Law license.</p>
+          <a href="https://www.afterpay.com/en-US/how-it-works" target="_blank" rel="noopener noreferrer" class="afterpay-modal-link">Learn more at afterpay.com</a>
+        </div>
+      </div>`;
+    _afterpayModal = div.firstElementChild;
+    document.body.appendChild(_afterpayModal);
+    _afterpayModal.addEventListener("click", function (e) {
+      if (e.target === _afterpayModal) closeAfterpayModal();
+    });
+  }
+
+  _afterpayModal.style.display = "flex";
+  document.body.style.overflow = "hidden";
+
+  // Focus the close button
+  var closeBtn = _afterpayModal.querySelector(".afterpay-modal-close");
+  if (closeBtn) closeBtn.focus();
+
+  // Focus trap + Escape key
+  _afterpayModal._keyHandler = function (e) {
+    if (e.key === "Escape") {
+      closeAfterpayModal();
+      return;
+    }
+    if (e.key === "Tab") {
+      var focusable = _afterpayModal.querySelectorAll(
+        'button, a[href], [tabindex]:not([tabindex="-1"])',
+      );
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+  };
+  document.addEventListener("keydown", _afterpayModal._keyHandler);
+}
+
+function closeAfterpayModal() {
+  if (!_afterpayModal) return;
+  _afterpayModal.style.display = "none";
+  document.body.style.overflow = "";
+  if (_afterpayModal._keyHandler) {
+    document.removeEventListener("keydown", _afterpayModal._keyHandler);
+  }
+  if (_afterpayTrigger && _afterpayTrigger.focus) _afterpayTrigger.focus();
+}
