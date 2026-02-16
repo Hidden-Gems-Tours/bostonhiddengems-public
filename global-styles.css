@@ -1390,7 +1390,7 @@ body > footer,
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 6px;
   background: #f0faf5;
   border: 1px solid #b2fce4;
   border-radius: 12px;
