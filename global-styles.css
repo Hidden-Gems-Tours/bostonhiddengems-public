@@ -243,8 +243,8 @@
   border-radius: 20px;
   overflow: hidden;
   max-width: 600px;
-  width: calc((100% - 60px) / 3);
-  min-width: 320px;
+  width: calc(33.333% - 22px);
+  min-width: 300px;
   min-height: 480px;
   text-decoration: none;
   color: inherit;
