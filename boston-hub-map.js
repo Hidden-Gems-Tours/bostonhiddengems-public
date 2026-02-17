@@ -123,23 +123,23 @@
      ====================================================================== */
   var STYLES = {
     active: {
-      color: "#7CAEF4",
-      weight: 0,
-      opacity: 0,
+      color: "#172436",
+      weight: 1.5,
+      opacity: 0.6,
       fillColor: "#7CAEF4",
       fillOpacity: 0.7,
     },
     comingSoon: {
-      color: "#b8c2cc",
-      weight: 0,
-      opacity: 0,
+      color: "#172436",
+      weight: 1.5,
+      opacity: 0.4,
       fillColor: "#b8c2cc",
       fillOpacity: 0.55,
     },
     background: {
-      color: "#cdd3da",
-      weight: 0,
-      opacity: 0,
+      color: "#172436",
+      weight: 1.5,
+      opacity: 0.3,
       fillColor: "#cdd3da",
       fillOpacity: 0.5,
     },
