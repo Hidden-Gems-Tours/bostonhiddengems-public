@@ -1128,6 +1128,11 @@ html {
    BOSTON HUB NEIGHBORHOOD MAP
    ========================================================================== */
 
+/* Remove Leaflet default focus outline on polygon click */
+.hub-map-leaflet .leaflet-interactive:focus {
+  outline: none;
+}
+
 /* Layout: map + sidebar side by side */
 .hub-map-layout {
   display: flex;
