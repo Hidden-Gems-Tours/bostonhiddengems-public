@@ -379,15 +379,6 @@ function renderTourCards(containerId, options = {}) {
     container.appendChild(card);
   });
 
-  // Center incomplete last row by preventing those cards from growing
-  var rendered = container.querySelectorAll(".card");
-  var remainder = rendered.length % 3;
-  if (remainder > 0 && rendered.length > 3) {
-    for (var i = rendered.length - remainder; i < rendered.length; i++) {
-      rendered[i].style.flexGrow = "0";
-    }
-  }
-
   // Show results count if requested
   if (showResultsCount) {
     const countElement = document.getElementById(containerId + "-count");
