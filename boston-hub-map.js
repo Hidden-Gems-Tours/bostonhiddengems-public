@@ -143,19 +143,27 @@
       fillColor: "#cdd3da",
       fillOpacity: 0.35,
     },
-    /* Hover uses no border — gradient fill applied via SVG radialGradient */
-    hoverReset: {
-      weight: 0,
-      opacity: 0,
+    activeHover: {
+      color: "#172436",
+      weight: 1.5,
+      opacity: 0.5,
+      fillColor: "#7CAEF4",
+      fillOpacity: 0.65,
     },
-  };
-
-  /* Radial gradient definitions for hover effect.
-     Each gradient goes from dark center → transparent edges. */
-  var GRADIENTS = {
-    active:    { id: "hub-grad-active",  color: "#1a5bb5", stops: [[0, 0.8], [45, 0.45], [100, 0.08]] },
-    comingSoon:{ id: "hub-grad-coming",  color: "#6b7785", stops: [[0, 0.6], [45, 0.3],  [100, 0.06]] },
-    unavailable:{ id: "hub-grad-unavail", color: "#8891a0", stops: [[0, 0.5], [45, 0.25], [100, 0.05]] },
+    comingSoonHover: {
+      color: "#8891a0",
+      weight: 1,
+      opacity: 0.4,
+      fillColor: "#b8c2cc",
+      fillOpacity: 0.5,
+    },
+    backgroundHover: {
+      color: "#8891a0",
+      weight: 1,
+      opacity: 0.3,
+      fillColor: "#cdd3da",
+      fillOpacity: 0.45,
+    },
   };
 
   /* ======================================================================
@@ -401,58 +409,6 @@
   };
 
   /* ------------------------------------------------------------------
-     Create SVG radial gradients for hover effect
-     ------------------------------------------------------------------ */
-  BostonHubMap.prototype._createGradients = function () {
-    var svgEl = this.map.getPane("overlayPane").querySelector("svg");
-    if (!svgEl) return;
-
-    var svgNS = "http://www.w3.org/2000/svg";
-    var defs = document.createElementNS(svgNS, "defs");
-
-    Object.keys(GRADIENTS).forEach(function (key) {
-      var g = GRADIENTS[key];
-      var grad = document.createElementNS(svgNS, "radialGradient");
-      grad.setAttribute("id", g.id);
-      grad.setAttribute("cx", "50%");
-      grad.setAttribute("cy", "50%");
-      grad.setAttribute("r", "70%");
-
-      g.stops.forEach(function (s) {
-        var stop = document.createElementNS(svgNS, "stop");
-        stop.setAttribute("offset", s[0] + "%");
-        stop.setAttribute("stop-color", g.color);
-        stop.setAttribute("stop-opacity", String(s[1]));
-        grad.appendChild(stop);
-      });
-
-      defs.appendChild(grad);
-    });
-
-    svgEl.insertBefore(defs, svgEl.firstChild);
-  };
-
-  /* ------------------------------------------------------------------
-     Apply gradient fill to a layer's SVG path(s)
-     ------------------------------------------------------------------ */
-  function applyGradientFill(layer, gradientId) {
-    var url = "url(#" + gradientId + ")";
-    if (layer._path) {
-      layer._path.setAttribute("fill", url);
-      layer._path.setAttribute("fill-opacity", "1");
-    }
-    /* MultiPolygon sub-layers */
-    if (layer.eachLayer) {
-      layer.eachLayer(function (sub) {
-        if (sub._path) {
-          sub._path.setAttribute("fill", url);
-          sub._path.setAttribute("fill-opacity", "1");
-        }
-      });
-    }
-  }
-
-  /* ------------------------------------------------------------------
      Highlight / unhighlight
      ------------------------------------------------------------------ */
   BostonHubMap.prototype.highlightNeighborhood = function (geoName) {
@@ -461,17 +417,14 @@
     var item = this.sidebarItems[geoName];
 
     if (layer && cfg) {
-      /* Remove any border, then apply radial gradient */
-      layer.setStyle(STYLES.hoverReset);
-      layer.bringToFront();
-
-      var gradKey =
+      var style =
         cfg.status === "active"
-          ? "active"
+          ? STYLES.activeHover
           : cfg.status === "comingSoon"
-          ? "comingSoon"
-          : "unavailable";
-      applyGradientFill(layer, GRADIENTS[gradKey].id);
+          ? STYLES.comingSoonHover
+          : STYLES.backgroundHover;
+      layer.setStyle(style);
+      layer.bringToFront();
     }
 
     if (item) {
@@ -500,7 +453,6 @@
     var layer = this.layers[geoName];
     var item = this.sidebarItems[geoName];
 
-    /* setStyle resets SVG fill attribute back to flat color */
     if (layer) {
       if (!cfg || cfg.status === "unavailable") {
         layer.setStyle(STYLES.background);
@@ -542,7 +494,6 @@
     );
     hubMap.createMap();
     hubMap.addNeighborhoodLayers();
-    hubMap._createGradients();
     hubMap.buildSidebar();
   }
 
