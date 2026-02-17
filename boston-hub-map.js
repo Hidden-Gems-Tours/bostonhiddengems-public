@@ -28,7 +28,7 @@
   /* ======================================================================
      NEIGHBORHOOD LOOKUP
      Maps GeoJSON "name" → display config.
-     status: "active" | "comingSoon" | "unavailable"
+     status: "active" | "comingSoon" | "greenSpace" | "unavailable"
      All neighborhoods listed here appear in the sidebar.
      ====================================================================== */
   var NEIGHBORHOODS = {
@@ -49,7 +49,7 @@
       slug: "beacon-hill",
       link: "/neighborhood-guides/beacon-hill",
     },
-    "Boston Common/Public Garden": { status: "unavailable" },
+    "Boston Common/Public Garden": { status: "greenSpace" },
     Charlestown: {
       status: "comingSoon",
       slug: "charlestown",
@@ -130,12 +130,12 @@
     Mattapan: { status: "unavailable" },
     "Mission Hill": { status: "unavailable" },
     Roslindale: { status: "unavailable" },
-    Riverway: { status: "unavailable" },
+    Riverway: { status: "greenSpace" },
     Roxbury: { status: "unavailable" },
     "Leather District": { status: "unavailable" },
     "Symphony/Northeastern": { status: "unavailable" },
-    "The Esplanade/Charles River": { status: "unavailable" },
-    "The Fens": { status: "unavailable" },
+    "The Esplanade/Charles River": { status: "greenSpace" },
+    "The Fens": { status: "greenSpace" },
     "West Roxbury": { status: "unavailable" },
   };
 
@@ -183,6 +183,20 @@
       weight: 1,
       opacity: 0.3,
       fillColor: "#cdd3da",
+      fillOpacity: 0.6,
+    },
+    greenSpace: {
+      color: "#172436",
+      weight: 1.5,
+      opacity: 0.3,
+      fillColor: "#6ab775",
+      fillOpacity: 0.5,
+    },
+    greenSpaceHover: {
+      color: "#3d7a47",
+      weight: 1,
+      opacity: 0.4,
+      fillColor: "#6ab775",
       fillOpacity: 0.6,
     },
   };
@@ -253,6 +267,7 @@
         if (!cfg) return STYLES.background;
         if (cfg.status === "active") return STYLES.active;
         if (cfg.status === "comingSoon") return STYLES.comingSoon;
+        if (cfg.status === "greenSpace") return STYLES.greenSpace;
         return STYLES.background;
       },
       onEachFeature: function (feature, layer) {
@@ -264,6 +279,7 @@
         /* Tooltip */
         var label = displayName(name);
         if (cfg && cfg.status === "comingSoon") label += " (Coming Soon)";
+        if (cfg && cfg.status === "greenSpace") label += " (Green Space/Park)";
         if (cfg && cfg.status === "unavailable") label += " (Not Available)";
         layer.bindTooltip(label, {
           sticky: true,
@@ -331,6 +347,9 @@
         li.className = "hub-neighborhood-item";
       } else if (cfg.status === "comingSoon") {
         li.className = "hub-neighborhood-item hub-neighborhood-item--dimmed";
+        li.setAttribute("aria-disabled", "true");
+      } else if (cfg.status === "greenSpace") {
+        li.className = "hub-neighborhood-item hub-neighborhood-item--green";
         li.setAttribute("aria-disabled", "true");
       } else {
         li.className =
@@ -443,6 +462,8 @@
           ? STYLES.activeHover
           : cfg.status === "comingSoon"
           ? STYLES.comingSoonHover
+          : cfg.status === "greenSpace"
+          ? STYLES.greenSpaceHover
           : STYLES.backgroundHover;
       layer.setStyle(style);
       layer.bringToFront();
@@ -461,6 +482,8 @@
         announcer.textContent = label + " — click to view guide";
       } else if (cfg && cfg.status === "comingSoon") {
         announcer.textContent = label + " — coming soon";
+      } else if (cfg && cfg.status === "greenSpace") {
+        announcer.textContent = label + " — green space/park";
       } else if (cfg) {
         announcer.textContent = label + " — not available";
       } else {
@@ -479,6 +502,8 @@
         layer.setStyle(STYLES.background);
       } else if (cfg.status === "active") {
         layer.setStyle(STYLES.active);
+      } else if (cfg.status === "greenSpace") {
+        layer.setStyle(STYLES.greenSpace);
       } else {
         layer.setStyle(STYLES.comingSoon);
       }
