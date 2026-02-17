@@ -1224,6 +1224,25 @@ html {
   border-left-color: #cdd3da;
 }
 
+/* Unavailable items */
+.hub-neighborhood-item--unavailable {
+  color: #aaa;
+  cursor: default;
+  font-size: 14px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.hub-neighborhood-item--unavailable:hover,
+.hub-neighborhood-item--unavailable.hub-neighborhood-item--highlighted {
+  background-color: #f0f2f5;
+  border-left-color: #d5dae0;
+}
+
+.hub-neighborhood-item--unavailable .hub-neighborhood-swatch {
+  background-color: #d5dae0;
+}
+
 /* Color swatch */
 .hub-neighborhood-swatch {
   width: 12px;

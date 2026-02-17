@@ -28,81 +28,94 @@
   /* ======================================================================
      NEIGHBORHOOD LOOKUP
      Maps GeoJSON "name" → display config.
-     Only neighborhoods listed here appear in the sidebar.
+     status: "active" | "comingSoon" | "unavailable"
+     All neighborhoods listed here appear in the sidebar.
      ====================================================================== */
   var NEIGHBORHOODS = {
+    /* --- Active guides --- */
     "North End": {
-      hasGuide: true,
+      status: "active",
       slug: "north-end",
       link: "/neighborhood-guides/north-end",
     },
+    /* --- Coming soon --- */
     "Back Bay": {
-      hasGuide: false,
+      status: "comingSoon",
       slug: "back-bay",
       link: "/neighborhood-guides/back-bay",
     },
     "Beacon Hill": {
-      hasGuide: false,
+      status: "comingSoon",
       slug: "beacon-hill",
       link: "/neighborhood-guides/beacon-hill",
     },
     Charlestown: {
-      hasGuide: false,
+      status: "comingSoon",
       slug: "charlestown",
       link: "/neighborhood-guides/charlestown",
     },
     Chinatown: {
-      hasGuide: false,
+      status: "comingSoon",
       slug: "chinatown",
       link: "/neighborhood-guides/chinatown",
     },
     Dorchester: {
-      hasGuide: false,
+      status: "comingSoon",
       slug: "dorchester",
       link: "/neighborhood-guides/dorchester",
     },
     Downtown: {
-      hasGuide: false,
+      status: "comingSoon",
       slug: "downtown",
       link: "/neighborhood-guides/downtown",
     },
     "East Boston": {
-      hasGuide: false,
+      status: "comingSoon",
       slug: "east-boston",
       link: "/neighborhood-guides/east-boston",
     },
     Fenway: {
-      hasGuide: false,
+      status: "comingSoon",
       slug: "fenway-kenmore",
       link: "/neighborhood-guides/fenway-kenmore",
       displayName: "Fenway-Kenmore",
     },
     "Jamaica Plain": {
-      hasGuide: false,
+      status: "comingSoon",
       slug: "jamaica-plain",
       link: "/neighborhood-guides/jamaica-plain",
     },
     "South Boston Waterfront": {
-      hasGuide: false,
+      status: "comingSoon",
       slug: "seaport",
       link: "/neighborhood-guides/seaport",
       displayName: "Seaport",
     },
     "South Boston": {
-      hasGuide: false,
+      status: "comingSoon",
       slug: "south-boston",
       link: "/neighborhood-guides/south-boston",
     },
     "South End": {
-      hasGuide: false,
+      status: "comingSoon",
       slug: "south-end",
       link: "/neighborhood-guides/south-end",
     },
     "West End": {
-      hasGuide: false,
+      status: "comingSoon",
       slug: "west-end",
       link: "/neighborhood-guides/west-end",
     },
+    /* --- Not available --- */
+    Allston: { status: "unavailable" },
+    Brighton: { status: "unavailable" },
+    "Hyde Park": { status: "unavailable" },
+    Longwood: { status: "unavailable" },
+    Mattapan: { status: "unavailable" },
+    "Mission Hill": { status: "unavailable" },
+    Roslindale: { status: "unavailable" },
+    Roxbury: { status: "unavailable" },
+    "West Roxbury": { status: "unavailable" },
   };
 
   /* ======================================================================
@@ -210,7 +223,9 @@
         var name = feature.properties.name;
         var cfg = NEIGHBORHOODS[name];
         if (!cfg) return STYLES.background;
-        return cfg.hasGuide ? STYLES.active : STYLES.comingSoon;
+        if (cfg.status === "active") return STYLES.active;
+        if (cfg.status === "comingSoon") return STYLES.comingSoon;
+        return STYLES.background;
       },
       onEachFeature: function (feature, layer) {
         var name = feature.properties.name;
@@ -220,7 +235,8 @@
 
         /* Tooltip */
         var label = displayName(name);
-        if (cfg && !cfg.hasGuide) label += " (Coming Soon)";
+        if (cfg && cfg.status === "comingSoon") label += " (Coming Soon)";
+        if (cfg && cfg.status === "unavailable") label += " (Not Available)";
         layer.bindTooltip(label, {
           sticky: true,
           direction: "top",
@@ -235,13 +251,13 @@
           self.unhighlightNeighborhood(name);
         });
         layer.on("click", function () {
-          if (cfg && cfg.hasGuide) {
+          if (cfg && cfg.status === "active") {
             self.navigateToGuide(name);
           }
         });
 
         /* Cursor */
-        if (cfg && cfg.hasGuide) {
+        if (cfg && cfg.status === "active") {
           layer.on("mouseover", function () {
             var el = self.map.getContainer();
             el.style.cursor = "pointer";
@@ -262,13 +278,10 @@
     var sidebar = document.getElementById(this.sidebarId);
     if (!sidebar) return;
 
-    var activeList = sidebar.querySelector(
-      ".hub-sidebar-list--active"
-    );
-    var comingList = sidebar.querySelector(
-      ".hub-sidebar-list--coming"
-    );
-    if (!activeList || !comingList) return;
+    var activeList = sidebar.querySelector(".hub-sidebar-list--active");
+    var comingList = sidebar.querySelector(".hub-sidebar-list--coming");
+    var unavailList = sidebar.querySelector(".hub-sidebar-list--unavailable");
+    if (!activeList || !comingList || !unavailList) return;
 
     var self = this;
     var names = Object.keys(NEIGHBORHOODS);
@@ -286,10 +299,14 @@
       li.setAttribute("data-neighborhood", geoName);
       li.setAttribute("tabindex", "0");
 
-      if (cfg.hasGuide) {
+      if (cfg.status === "active") {
         li.className = "hub-neighborhood-item";
-      } else {
+      } else if (cfg.status === "comingSoon") {
         li.className = "hub-neighborhood-item hub-neighborhood-item--dimmed";
+        li.setAttribute("aria-disabled", "true");
+      } else {
+        li.className =
+          "hub-neighborhood-item hub-neighborhood-item--unavailable";
         li.setAttribute("aria-disabled", "true");
       }
 
@@ -319,22 +336,24 @@
         self.unhighlightNeighborhood(geoName);
       });
       li.addEventListener("click", function () {
-        if (cfg.hasGuide) self.navigateToGuide(geoName);
+        if (cfg.status === "active") self.navigateToGuide(geoName);
       });
       li.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
-          if (cfg.hasGuide) self.navigateToGuide(geoName);
+          if (cfg.status === "active") self.navigateToGuide(geoName);
         }
         self._handleArrowKeys(e, li);
       });
 
       self.sidebarItems[geoName] = li;
 
-      if (cfg.hasGuide) {
+      if (cfg.status === "active") {
         activeList.appendChild(li);
-      } else {
+      } else if (cfg.status === "comingSoon") {
         comingList.appendChild(li);
+      } else {
+        unavailList.appendChild(li);
       }
     });
   };
@@ -391,7 +410,10 @@
     var item = this.sidebarItems[geoName];
 
     if (layer && cfg) {
-      var style = cfg.hasGuide ? STYLES.activeHover : STYLES.comingSoonHover;
+      var style =
+        cfg.status === "active"
+          ? STYLES.activeHover
+          : STYLES.comingSoonHover;
       layer.setStyle(style);
       layer.bringToFront();
     }
@@ -405,10 +427,12 @@
     var announcer = document.getElementById(this.announceId);
     if (announcer) {
       var label = displayName(geoName);
-      if (cfg && cfg.hasGuide) {
+      if (cfg && cfg.status === "active") {
         announcer.textContent = label + " — click to view guide";
-      } else if (cfg) {
+      } else if (cfg && cfg.status === "comingSoon") {
         announcer.textContent = label + " — coming soon";
+      } else if (cfg) {
+        announcer.textContent = label + " — not available";
       } else {
         announcer.textContent = label;
       }
@@ -421,10 +445,12 @@
     var item = this.sidebarItems[geoName];
 
     if (layer) {
-      if (!cfg) {
+      if (!cfg || cfg.status === "unavailable") {
         layer.setStyle(STYLES.background);
+      } else if (cfg.status === "active") {
+        layer.setStyle(STYLES.active);
       } else {
-        layer.setStyle(cfg.hasGuide ? STYLES.active : STYLES.comingSoon);
+        layer.setStyle(STYLES.comingSoon);
       }
     }
 
