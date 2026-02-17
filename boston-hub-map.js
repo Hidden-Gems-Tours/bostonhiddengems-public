@@ -188,16 +188,16 @@
     greenSpace: {
       color: "#172436",
       weight: 1.5,
-      opacity: 0.3,
-      fillColor: "#6ab775",
-      fillOpacity: 0.5,
+      opacity: 0.2,
+      fillColor: "#8ccf96",
+      fillOpacity: 0.35,
     },
     greenSpaceHover: {
       color: "#3d7a47",
       weight: 1,
-      opacity: 0.4,
-      fillColor: "#6ab775",
-      fillOpacity: 0.6,
+      opacity: 0.3,
+      fillColor: "#8ccf96",
+      fillOpacity: 0.45,
     },
   };
 
