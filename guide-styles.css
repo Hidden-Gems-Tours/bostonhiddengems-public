@@ -1125,6 +1125,188 @@ html {
 }
 
 /* ==========================================================================
+   BOSTON HUB NEIGHBORHOOD MAP
+   ========================================================================== */
+
+/* Layout: map + sidebar side by side */
+.hub-map-layout {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: var(--guide-card-radius, 16px);
+  border: 1px solid var(--guide-border-color, #cdd3da);
+  overflow: hidden;
+  background: #fff;
+}
+
+/* Map container */
+.hub-map-container {
+  flex: 1;
+  min-width: 0;
+}
+
+.hub-map-leaflet {
+  width: 100%;
+  height: 500px;
+}
+
+/* Sidebar */
+.hub-map-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  overflow-y: auto;
+  max-height: 500px;
+  border-left: 1px solid var(--guide-border-color, #cdd3da);
+  background: var(--guide-bg-light, #f7f9fc);
+  padding: 20px 0;
+}
+
+.hub-sidebar-heading {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: #888;
+  padding: 0 20px 10px;
+  margin: 0;
+}
+
+.hub-sidebar-heading + .hub-sidebar-heading {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--guide-border-color, #cdd3da);
+}
+
+.hub-sidebar-list {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+}
+
+/* Sidebar item */
+.hub-neighborhood-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: background-color 0.15s, border-color 0.15s;
+  font-size: 15px;
+  color: #333;
+}
+
+.hub-neighborhood-item:hover,
+.hub-neighborhood-item--highlighted {
+  background-color: var(--guide-bg-highlight, #eaeff6);
+  border-left-color: #7CAEF4;
+}
+
+.hub-neighborhood-item:focus-visible {
+  outline: 2px solid #172436;
+  outline-offset: -2px;
+}
+
+/* Dimmed (coming soon) items */
+.hub-neighborhood-item--dimmed {
+  color: #999;
+  cursor: default;
+}
+
+.hub-neighborhood-item--dimmed:hover,
+.hub-neighborhood-item--dimmed.hub-neighborhood-item--highlighted {
+  background-color: #f0f2f5;
+  border-left-color: #cdd3da;
+}
+
+/* Color swatch */
+.hub-neighborhood-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  background-color: #7CAEF4;
+}
+
+.hub-neighborhood-item--dimmed .hub-neighborhood-swatch {
+  background-color: #cdd3da;
+}
+
+/* Neighborhood name */
+.hub-neighborhood-name {
+  flex: 1;
+  line-height: 1.3;
+}
+
+/* Leaflet tooltip override for hub map */
+.hub-map-tooltip {
+  background: rgba(23, 36, 54, 0.9);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.hub-map-tooltip::before {
+  border-top-color: rgba(23, 36, 54, 0.9);
+}
+
+/* Visually hidden announcer */
+.hub-map-announce {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Mobile: stack sidebar below map */
+@media only screen and (max-width: 767px) {
+  .hub-map-layout {
+    flex-direction: column;
+  }
+
+  .hub-map-leaflet {
+    height: 350px;
+  }
+
+  .hub-map-sidebar {
+    width: 100%;
+    max-height: 300px;
+    border-left: none;
+    border-top: 1px solid var(--guide-border-color, #cdd3da);
+  }
+}
+
+/* Tablet: narrower sidebar */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .hub-map-sidebar {
+    width: 240px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hub-neighborhood-item {
+    transition: none;
+  }
+}
+
+/* Print: hide hub map */
+@media print {
+  .hub-map-layout {
+    display: none;
+  }
+}
+
+/* ==========================================================================
    PRINT STYLES
    ========================================================================== */
 @media print {
