@@ -243,7 +243,7 @@
   border-radius: 20px;
   overflow: hidden;
   max-width: 600px;
-  width: calc(33.333% - 22px);
+  flex: 1 1 calc(33.333% - 22px);
   min-width: 300px;
   min-height: 480px;
   text-decoration: none;
@@ -1163,7 +1163,7 @@ body > footer,
    ========================================================================== */
 @media only screen and (max-width: 767px) {
   .card {
-    width: 100%;
+    flex-basis: 100%;
     min-width: unset;
   }
 
