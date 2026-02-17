@@ -227,6 +227,7 @@
     this.map = null;
     this.layers = {}; // geoName → Leaflet layer
     this.sidebarItems = {}; // geoName → DOM element
+    this._highlighted = null; // currently highlighted geoName (prevents stuck tooltips)
   }
 
   /* ------------------------------------------------------------------
@@ -452,6 +453,12 @@
      Highlight / unhighlight
      ------------------------------------------------------------------ */
   BostonHubMap.prototype.highlightNeighborhood = function (geoName) {
+    /* Clear any stale highlight (guards against missed mouseout events) */
+    if (this._highlighted && this._highlighted !== geoName) {
+      this.unhighlightNeighborhood(this._highlighted);
+    }
+    this._highlighted = geoName;
+
     var cfg = NEIGHBORHOODS[geoName];
     var layer = this.layers[geoName];
     var item = this.sidebarItems[geoName];
@@ -493,6 +500,8 @@
   };
 
   BostonHubMap.prototype.unhighlightNeighborhood = function (geoName) {
+    if (this._highlighted === geoName) this._highlighted = null;
+
     var cfg = NEIGHBORHOODS[geoName];
     var layer = this.layers[geoName];
     var item = this.sidebarItems[geoName];
@@ -507,6 +516,7 @@
       } else {
         layer.setStyle(STYLES.comingSoon);
       }
+      layer.closeTooltip();
     }
 
     if (item) {
