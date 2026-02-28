@@ -14,7 +14,10 @@
    CSS CUSTOM PROPERTIES (Design System Variables)
    ========================================================================== */
 :root {
+  --primary-blue: #7CAEF4;
   --primary-navy: #172436;
+  --secondary-navy: #113973;
+  --accent-orange: #DE5700;
   --border-light: #cdd3da;
   --bg-drawer: #f7f9fc;
   --primary-gold: #FFD700;
@@ -243,7 +246,7 @@
   border-radius: 20px;
   overflow: hidden;
   max-width: 600px;
-  width: calc(33.333% - 22px);
+  flex: 1 1 calc(33.333% - 22px);
   min-width: 300px;
   min-height: 480px;
   text-decoration: none;
@@ -1163,7 +1166,7 @@ body > footer,
    ========================================================================== */
 @media only screen and (max-width: 767px) {
   .card {
-    width: 100%;
+    flex-basis: 100%;
     min-width: unset;
   }
 
