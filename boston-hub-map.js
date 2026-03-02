@@ -32,165 +32,187 @@
      All neighborhoods listed here appear in the sidebar.
      ====================================================================== */
   var NEIGHBORHOODS = {
-    /* --- Active guides --- */
+    /* --- Boston — Active guides --- */
     "North End": {
+      city: "Boston",
       status: "active",
       slug: "north-end",
       link: "/neighborhood-guides/north-end",
     },
-    /* --- Coming soon --- */
+    /* --- Boston — Coming soon --- */
     "Back Bay": {
+      city: "Boston",
       status: "comingSoon",
       slug: "back-bay",
       link: "/neighborhood-guides/back-bay",
     },
     "Beacon Hill": {
+      city: "Boston",
       status: "comingSoon",
       slug: "beacon-hill",
       link: "/neighborhood-guides/beacon-hill",
     },
-    "Boston Common/Public Garden": { status: "greenSpace" },
+    "Boston Common/Public Garden": { city: "Boston", status: "greenSpace" },
     Charlestown: {
+      city: "Boston",
       status: "comingSoon",
       slug: "charlestown",
       link: "/neighborhood-guides/charlestown",
     },
     Chinatown: {
+      city: "Boston",
       status: "comingSoon",
       slug: "chinatown",
       link: "/neighborhood-guides/chinatown",
     },
     Dorchester: {
+      city: "Boston",
       status: "comingSoon",
       slug: "dorchester",
       link: "/neighborhood-guides/dorchester",
     },
     "Downtown (Theater District)": {
+      city: "Boston",
       status: "comingSoon",
       slug: "downtown",
       link: "/neighborhood-guides/downtown",
     },
     "Downtown Crossing": {
+      city: "Boston",
       status: "comingSoon",
       slug: "downtown",
       link: "/neighborhood-guides/downtown",
     },
     "Downtown (Financial District)": {
+      city: "Boston",
       status: "comingSoon",
       slug: "downtown",
       link: "/neighborhood-guides/downtown",
     },
     "Downtown (Government Center)": {
+      city: "Boston",
       status: "comingSoon",
       slug: "downtown",
       link: "/neighborhood-guides/downtown",
     },
     "East Boston": {
+      city: "Boston",
       status: "comingSoon",
       slug: "east-boston",
       link: "/neighborhood-guides/east-boston",
     },
     Fenway: {
+      city: "Boston",
       status: "comingSoon",
       slug: "fenway-kenmore",
       link: "/neighborhood-guides/fenway-kenmore",
       displayName: "Fenway-Kenmore",
     },
     "Jamaica Plain": {
+      city: "Boston",
       status: "comingSoon",
       slug: "jamaica-plain",
       link: "/neighborhood-guides/jamaica-plain",
     },
     "South Boston Waterfront": {
+      city: "Boston",
       status: "comingSoon",
       slug: "seaport",
       link: "/neighborhood-guides/seaport",
       displayName: "Seaport",
     },
     "South Boston": {
+      city: "Boston",
       status: "comingSoon",
       slug: "south-boston",
       link: "/neighborhood-guides/south-boston",
     },
     "South End": {
+      city: "Boston",
       status: "comingSoon",
       slug: "south-end",
       link: "/neighborhood-guides/south-end",
     },
     "West End": {
+      city: "Boston",
       status: "comingSoon",
       slug: "west-end",
       link: "/neighborhood-guides/west-end",
     },
-    /* --- Not available --- */
-    Allston: { status: "unavailable" },
-    Brighton: { status: "unavailable" },
-    "Hyde Park": { status: "unavailable" },
-    Longwood: { status: "unavailable" },
-    Mattapan: { status: "unavailable" },
-    "Mission Hill": { status: "unavailable" },
-    Roslindale: { status: "unavailable" },
-    Riverway: { status: "greenSpace" },
-    Roxbury: { status: "unavailable" },
-    "Leather District": { status: "unavailable" },
-    "Symphony/Northeastern": { status: "unavailable" },
-    "The Esplanade/Charles River": { status: "greenSpace" },
-    "The Fens": { status: "greenSpace" },
-    "West Roxbury": { status: "unavailable" },
+    /* --- Boston — Not available --- */
+    Allston: { city: "Boston", status: "unavailable" },
+    Brighton: { city: "Boston", status: "unavailable" },
+    "Hyde Park": { city: "Boston", status: "unavailable" },
+    Longwood: { city: "Boston", status: "unavailable" },
+    Mattapan: { city: "Boston", status: "unavailable" },
+    "Mission Hill": { city: "Boston", status: "unavailable" },
+    Roslindale: { city: "Boston", status: "unavailable" },
+    Riverway: { city: "Boston", status: "greenSpace" },
+    Roxbury: { city: "Boston", status: "unavailable" },
+    "Leather District": { city: "Boston", status: "unavailable" },
+    "Symphony/Northeastern": { city: "Boston", status: "unavailable" },
+    "The Esplanade/Charles River": { city: "Boston", status: "greenSpace" },
+    "The Fens": { city: "Boston", status: "greenSpace" },
+    "West Roxbury": { city: "Boston", status: "unavailable" },
     /* --- Cambridge --- */
-    "Area 2/MIT": { status: "unavailable" },
-    Baldwin: { status: "unavailable" },
-    "Cambridge Highlands": { status: "unavailable" },
-    Cambridgeport: { status: "unavailable" },
-    "East Cambridge": { status: "unavailable" },
-    "Mid-Cambridge": { status: "unavailable" },
-    "Neighborhood Nine": { status: "unavailable" },
-    "North Cambridge": { status: "unavailable" },
-    Riverside: { status: "unavailable" },
-    "Strawberry Hill": { status: "unavailable" },
-    "The Port": { status: "unavailable" },
-    "Wellington-Harrington": { status: "unavailable" },
-    "West Cambridge": { status: "unavailable" },
+    "Area 2/MIT": { city: "Cambridge", status: "unavailable" },
+    Baldwin: { city: "Cambridge", status: "unavailable" },
+    "Cambridge Highlands": { city: "Cambridge", status: "unavailable" },
+    Cambridgeport: { city: "Cambridge", status: "unavailable" },
+    "East Cambridge": { city: "Cambridge", status: "unavailable" },
+    "Mid-Cambridge": { city: "Cambridge", status: "unavailable" },
+    "Neighborhood Nine": { city: "Cambridge", status: "unavailable" },
+    "North Cambridge": { city: "Cambridge", status: "unavailable" },
+    Riverside: { city: "Cambridge", status: "unavailable" },
+    "Strawberry Hill": { city: "Cambridge", status: "unavailable" },
+    "The Port": { city: "Cambridge", status: "unavailable" },
+    "Wellington-Harrington": { city: "Cambridge", status: "unavailable" },
+    "West Cambridge": { city: "Cambridge", status: "unavailable" },
     /* --- Somerville --- */
     "Assembly Square": {
+      city: "Somerville",
       status: "comingSoon",
       slug: "assembly-square",
       link: "/neighborhood-guides/assembly-square",
     },
     "Ball Square": {
+      city: "Somerville",
       status: "comingSoon",
       slug: "ball-square",
       link: "/neighborhood-guides/ball-square",
     },
-    "Boynton Yards": { status: "unavailable" },
-    Brickbottom: { status: "unavailable" },
+    "Boynton Yards": { city: "Somerville", status: "unavailable" },
+    Brickbottom: { city: "Somerville", status: "unavailable" },
     "Davis Square": {
+      city: "Somerville",
       status: "comingSoon",
       slug: "davis-square",
       link: "/neighborhood-guides/davis-square",
     },
-    "Duck Village": { status: "unavailable" },
-    "East Somerville": { status: "unavailable" },
-    Hillside: { status: "unavailable" },
-    "Inner Belt": { status: "unavailable" },
-    "Magoun Square": { status: "unavailable" },
-    "North Point": { status: "unavailable" },
+    "Duck Village": { city: "Somerville", status: "unavailable" },
+    "East Somerville": { city: "Somerville", status: "unavailable" },
+    Hillside: { city: "Somerville", status: "unavailable" },
+    "Inner Belt": { city: "Somerville", status: "unavailable" },
+    "Magoun Square": { city: "Somerville", status: "unavailable" },
+    "North Point": { city: "Somerville", status: "unavailable" },
     "Porter Square": {
+      city: "Somerville",
       status: "comingSoon",
       slug: "porter-square",
       link: "/neighborhood-guides/porter-square",
     },
     "Powder House Square": {
+      city: "Somerville",
       status: "comingSoon",
       slug: "powder-house-square",
       link: "/neighborhood-guides/powder-house-square",
     },
-    "Spring Hill": { status: "unavailable" },
-    "Teele Square": { status: "unavailable" },
-    "Ten Hills": { status: "unavailable" },
-    "Twin City": { status: "unavailable" },
-    "Union Square": { status: "unavailable" },
-    "Winter Hill": { status: "unavailable" },
+    "Spring Hill": { city: "Somerville", status: "unavailable" },
+    "Teele Square": { city: "Somerville", status: "unavailable" },
+    "Ten Hills": { city: "Somerville", status: "unavailable" },
+    "Twin City": { city: "Somerville", status: "unavailable" },
+    "Union Square": { city: "Somerville", status: "unavailable" },
+    "Winter Hill": { city: "Somerville", status: "unavailable" },
   };
 
   /* ======================================================================
@@ -7047,87 +7069,144 @@
     var sidebar = document.getElementById(this.sidebarId);
     if (!sidebar) return;
 
-    var activeList = sidebar.querySelector(".hub-sidebar-list--active");
-    var comingList = sidebar.querySelector(".hub-sidebar-list--coming");
-    var unavailList = sidebar.querySelector(".hub-sidebar-list--unavailable");
-    if (!activeList || !comingList || !unavailList) return;
+    /* Clear any static HTML skeleton */
+    sidebar.innerHTML = "";
 
     var self = this;
-    var names = Object.keys(NEIGHBORHOODS);
+    var cities = ["Boston", "Cambridge", "Somerville"];
+    var statusOrder = ["active", "comingSoon", "unavailable"];
+    var statusLabels = {
+      active: "Our Neighborhood Guides",
+      comingSoon: "Coming Soon",
+      unavailable: "Not Available",
+    };
 
-    /* Sort alphabetically by display name */
-    names.sort(function (a, b) {
-      return displayName(a).localeCompare(displayName(b));
-    });
-
-    names.forEach(function (geoName) {
+    /* Group neighborhoods by city */
+    var byCity = {};
+    cities.forEach(function (c) { byCity[c] = []; });
+    Object.keys(NEIGHBORHOODS).forEach(function (geoName) {
       var cfg = NEIGHBORHOODS[geoName];
-      var li = document.createElement("li");
-      li.setAttribute("role", "option");
-      li.setAttribute("aria-selected", "false");
-      li.setAttribute("data-neighborhood", geoName);
-      li.setAttribute("tabindex", "0");
-
-      if (cfg.status === "active") {
-        li.className = "hub-neighborhood-item";
-      } else if (cfg.status === "comingSoon") {
-        li.className = "hub-neighborhood-item hub-neighborhood-item--dimmed";
-        li.setAttribute("aria-disabled", "true");
-      } else if (cfg.status === "greenSpace") {
-        li.className = "hub-neighborhood-item hub-neighborhood-item--green";
-        li.setAttribute("aria-disabled", "true");
-      } else {
-        li.className =
-          "hub-neighborhood-item hub-neighborhood-item--unavailable";
-        li.setAttribute("aria-disabled", "true");
-      }
-
-      /* Swatch + name */
-      var swatch = document.createElement("span");
-      swatch.className = "hub-neighborhood-swatch";
-      swatch.setAttribute("aria-hidden", "true");
-
-      var nameSpan = document.createElement("span");
-      nameSpan.className = "hub-neighborhood-name";
-      nameSpan.textContent = displayName(geoName);
-
-      li.appendChild(swatch);
-      li.appendChild(nameSpan);
-
-      /* Events */
-      li.addEventListener("mouseenter", function () {
-        self.highlightNeighborhood(geoName);
-      });
-      li.addEventListener("mouseleave", function () {
-        self.unhighlightNeighborhood(geoName);
-      });
-      li.addEventListener("focus", function () {
-        self.highlightNeighborhood(geoName);
-      });
-      li.addEventListener("blur", function () {
-        self.unhighlightNeighborhood(geoName);
-      });
-      li.addEventListener("click", function () {
-        if (cfg.status === "active") self.navigateToGuide(geoName);
-      });
-      li.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          if (cfg.status === "active") self.navigateToGuide(geoName);
-        }
-        self._handleArrowKeys(e, li);
-      });
-
-      self.sidebarItems[geoName] = li;
-
-      if (cfg.status === "active") {
-        activeList.appendChild(li);
-      } else if (cfg.status === "comingSoon") {
-        comingList.appendChild(li);
-      } else {
-        unavailList.appendChild(li);
+      if (cfg.city && byCity[cfg.city]) {
+        byCity[cfg.city].push(geoName);
       }
     });
+
+    cities.forEach(function (city) {
+      var names = byCity[city];
+      names.sort(function (a, b) {
+        return displayName(a).localeCompare(displayName(b));
+      });
+
+      /* Group by status */
+      var byStatus = {};
+      statusOrder.forEach(function (s) { byStatus[s] = []; });
+      names.forEach(function (geoName) {
+        var s = NEIGHBORHOODS[geoName].status;
+        /* greenSpace goes into unavailable bucket */
+        var bucket = (s === "greenSpace") ? "unavailable" : s;
+        if (byStatus[bucket]) byStatus[bucket].push(geoName);
+      });
+
+      /* Skip city entirely if empty */
+      var hasAny = statusOrder.some(function (s) { return byStatus[s].length > 0; });
+      if (!hasAny) return;
+
+      /* City heading */
+      var cityHeading = document.createElement("h3");
+      cityHeading.className = "hub-sidebar-heading hub-sidebar-heading--city";
+      cityHeading.textContent = city;
+      sidebar.appendChild(cityHeading);
+
+      statusOrder.forEach(function (status) {
+        var items = byStatus[status];
+        if (items.length === 0) return;
+
+        /* Status sub-heading */
+        var subHeading = document.createElement("h4");
+        subHeading.className = "hub-sidebar-subheading";
+        subHeading.textContent = statusLabels[status];
+        sidebar.appendChild(subHeading);
+
+        /* List */
+        var ul = document.createElement("ul");
+        ul.className = "hub-sidebar-list hub-sidebar-list--" +
+          (status === "active" ? "active" : status === "comingSoon" ? "coming" : "unavailable");
+        ul.setAttribute("role", "listbox");
+        ul.setAttribute("aria-label", statusLabels[status] + " in " + city);
+        sidebar.appendChild(ul);
+
+        items.forEach(function (geoName) {
+          var cfg = NEIGHBORHOODS[geoName];
+          var li = self._createSidebarItem(geoName, cfg);
+          ul.appendChild(li);
+        });
+      });
+    });
+  };
+
+  /* ------------------------------------------------------------------
+     Create a single sidebar list item
+     ------------------------------------------------------------------ */
+  BostonHubMap.prototype._createSidebarItem = function (geoName, cfg) {
+    var self = this;
+    var li = document.createElement("li");
+    li.setAttribute("role", "option");
+    li.setAttribute("aria-selected", "false");
+    li.setAttribute("data-neighborhood", geoName);
+    li.setAttribute("tabindex", "0");
+
+    if (cfg.status === "active") {
+      li.className = "hub-neighborhood-item";
+    } else if (cfg.status === "comingSoon") {
+      li.className = "hub-neighborhood-item hub-neighborhood-item--dimmed";
+      li.setAttribute("aria-disabled", "true");
+    } else if (cfg.status === "greenSpace") {
+      li.className = "hub-neighborhood-item hub-neighborhood-item--green";
+      li.setAttribute("aria-disabled", "true");
+    } else {
+      li.className =
+        "hub-neighborhood-item hub-neighborhood-item--unavailable";
+      li.setAttribute("aria-disabled", "true");
+    }
+
+    /* Swatch + name */
+    var swatch = document.createElement("span");
+    swatch.className = "hub-neighborhood-swatch";
+    swatch.setAttribute("aria-hidden", "true");
+
+    var nameSpan = document.createElement("span");
+    nameSpan.className = "hub-neighborhood-name";
+    nameSpan.textContent = displayName(geoName);
+
+    li.appendChild(swatch);
+    li.appendChild(nameSpan);
+
+    /* Events */
+    li.addEventListener("mouseenter", function () {
+      self.highlightNeighborhood(geoName);
+    });
+    li.addEventListener("mouseleave", function () {
+      self.unhighlightNeighborhood(geoName);
+    });
+    li.addEventListener("focus", function () {
+      self.highlightNeighborhood(geoName);
+    });
+    li.addEventListener("blur", function () {
+      self.unhighlightNeighborhood(geoName);
+    });
+    li.addEventListener("click", function () {
+      if (cfg.status === "active") self.navigateToGuide(geoName);
+    });
+    li.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        if (cfg.status === "active") self.navigateToGuide(geoName);
+      }
+      self._handleArrowKeys(e, li);
+    });
+
+    self.sidebarItems[geoName] = li;
+    return li;
   };
 
   /* ------------------------------------------------------------------
@@ -7139,32 +7218,28 @@
       e.preventDefault();
       next = currentLi.nextElementSibling;
       if (!next) {
-        /* Jump to next list */
-        var nextList =
-          currentLi.parentElement.nextElementSibling;
-        if (nextList && nextList.tagName === "UL") {
-          next = nextList.firstElementChild;
-        } else {
-          /* Try the list after the next heading */
-          var heading = currentLi.parentElement.nextElementSibling;
-          if (heading) {
-            var ul = heading.nextElementSibling;
-            if (ul && ul.tagName === "UL") next = ul.firstElementChild;
+        /* Walk forward through siblings of the UL to find the next UL */
+        var el = currentLi.parentElement.nextElementSibling;
+        while (el) {
+          if (el.tagName === "UL" && el.firstElementChild) {
+            next = el.firstElementChild;
+            break;
           }
+          el = el.nextElementSibling;
         }
       }
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
       next = currentLi.previousElementSibling;
       if (!next) {
-        /* Jump to previous list */
-        var prevEl = currentLi.parentElement.previousElementSibling;
-        if (prevEl && prevEl.tagName === "UL") {
-          next = prevEl.lastElementChild;
-        } else if (prevEl) {
-          var prevList = prevEl.previousElementSibling;
-          if (prevList && prevList.tagName === "UL")
-            next = prevList.lastElementChild;
+        /* Walk backward through siblings of the UL to find the previous UL */
+        var el = currentLi.parentElement.previousElementSibling;
+        while (el) {
+          if (el.tagName === "UL" && el.lastElementChild) {
+            next = el.lastElementChild;
+            break;
+          }
+          el = el.previousElementSibling;
         }
       }
     }

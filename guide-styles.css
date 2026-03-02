@@ -1182,6 +1182,31 @@ html {
   border-top: 1px solid var(--guide-border-color, #cdd3da);
 }
 
+/* City-level heading */
+.hub-sidebar-heading--city {
+  font-size: 15px;
+  font-weight: 800;
+  color: #172436;
+  padding: 12px 20px 6px;
+  border-top: 1px solid var(--guide-border-color, #cdd3da);
+}
+
+.hub-sidebar-heading--city:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+/* Status sub-heading under city */
+.hub-sidebar-subheading {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #aaa;
+  padding: 6px 20px 4px;
+  margin: 0;
+}
+
 .hub-sidebar-list {
   list-style: none;
   margin: 0 0 8px;
