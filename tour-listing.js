@@ -96,6 +96,7 @@ function renderTourCards(containerId, options = {}) {
     isActive = "all", // 'all', true, false - filter by isCurrentlyRunning status
     topN = 0, // Show only top N tours by ranking (0 = no limit, 3 = featured tours)
     showResultsCount = false, // Whether to show "X tours found" message
+    showFeaturedBadge = true, // Whether to show "Featured" badge on top-ranked tours
   } = options;
 
   const container = document.getElementById(containerId);
@@ -361,7 +362,7 @@ function renderTourCards(containerId, options = {}) {
         </div>`;
     }
 
-    const featuredBadgeHTML = tour.ranking <= 3 ? '<span class="featured-badge"><span class="material-symbols-sharp" aria-hidden="true">workspace_premium</span> Featured</span>' : '';
+    const featuredBadgeHTML = showFeaturedBadge && tour.ranking <= 3 ? '<span class="featured-badge"><span class="material-symbols-sharp" aria-hidden="true">workspace_premium</span> Featured</span>' : '';
     const teamFavBadgeHTML = tour.teamFavorite ? '<span class="team-fav-badge"><img src="https://images.squarespace-cdn.com/content/62db227779f36e51d2786802/1694148041368-KN5HSPUCITLWUYHXUYIA/BHG_Logo_ctr.png" alt="" aria-hidden="true" width="14" height="14" /> Team Favorite</span>' : '';
 
     card.innerHTML = `
