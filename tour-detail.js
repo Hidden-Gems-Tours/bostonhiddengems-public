@@ -482,7 +482,7 @@ function updateBreadcrumb() {
       '/tours':              'All Tours',
       '/private-tours':      'Private Tours',
       '/group-tours':        'Group Tours',
-      '/semiprivate-tours':  'Semi-Private Tours',
+      '/semiprivate-tours':  'Semiprivate Tours',
       '/250th':              '250th Anniversary Tours',
       '/self-guided':        'Self-Guided Tours',
       '/worldcup':           'Summer of Soccer'
