@@ -463,6 +463,41 @@ function renderMeetingPointSection(meetingPoint) {
 }
 
 /**
+ * Update breadcrumb based on referring page
+ * Shows contextual "Back to X" text based on where the user navigated from
+ */
+function updateBreadcrumb() {
+  var breadcrumbLink = document.querySelector('.tour-breadcrumb a');
+  if (!breadcrumbLink) return;
+
+  var referrer = document.referrer;
+  if (!referrer) return;
+
+  try {
+    var url = new URL(referrer);
+    if (url.origin !== window.location.origin) return;
+
+    var path = url.pathname.replace(/\/$/, '');
+    var breadcrumbMap = {
+      '/tours':              'All Tours',
+      '/private-tours':      'Private Tours',
+      '/group-tours':        'Group Tours',
+      '/semiprivate-tours':  'Semi-Private Tours',
+      '/250th':              '250th Anniversary Tours',
+      '/self-guided':        'Self-Guided Tours',
+      '/worldcup':           'Summer of Soccer'
+    };
+
+    if (breadcrumbMap[path]) {
+      breadcrumbLink.href = path;
+      breadcrumbLink.innerHTML = '&larr; Back to ' + breadcrumbMap[path];
+    }
+  } catch (e) {
+    // Invalid referrer URL, keep default breadcrumb
+  }
+}
+
+/**
  * Initialize a tour detail page with all functionality
  * @param {Object} config - Configuration object
  * @param {string} config.tourSku - The SKU of the current tour
@@ -474,6 +509,7 @@ function initTourDetailPage(config) {
   var hiddenStopsCount = config.hiddenStopsCount;
 
   function init() {
+    updateBreadcrumb();
     renderMeetingPointSection(config.meetingPoint);
     initRelatedTours(tourSku);
     updateTourData(tourSku);
