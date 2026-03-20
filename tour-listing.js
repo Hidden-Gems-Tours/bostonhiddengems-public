@@ -114,6 +114,9 @@ function renderTourCards(containerId, options = {}) {
 
   // Apply filters
   let filteredTours = allToursArray.filter((tour) => {
+    // Exclude hidden tours
+    if (tour.isHidden) return false;
+
     // Length filter
     let matchLength = true;
     if (lengthFilter === "short") {
