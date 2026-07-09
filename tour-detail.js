@@ -485,8 +485,7 @@ function updateBreadcrumb() {
       '/group-tours':        'Group Tours',
       '/semiprivate-tours':  'Semiprivate Tours',
       '/250th':              '250th Anniversary Tours',
-      '/self-guided':        'Self-Guided Tours',
-      '/worldcup':           'Summer of Soccer'
+      '/self-guided':        'Self-Guided Tours'
     };
 
     if (breadcrumbMap[path]) {

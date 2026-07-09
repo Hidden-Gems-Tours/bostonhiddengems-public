@@ -84,7 +84,7 @@ function updateTourRatings(toursArray, reviewData) {
 // Global function to render tour cards with filtering
 function renderTourCards(containerId, options = {}) {
   const {
-    specialEvent = "all", // 'all', '250th', 'worldcup', etc.
+    specialEvent = "all", // 'all', '250th', etc.
     tourType = "all", // 'all', 'private', 'shared', 'self-guided'
     sortBy = "featured", // 'featured', 'price-asc', 'price-desc', 'rating-asc', 'rating-desc', 'reviews-asc', 'reviews-desc', 'dur-asc', 'dur-desc'
     lengthFilter = "all", // 'all', 'short', 'half', 'full'
