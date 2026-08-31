@@ -317,6 +317,35 @@
   top: 38px;
 }
 
+/* --- KID-FRIENDLY BADGE --- */
+.kid-friendly-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: #8a3600;
+  background: #ffe4cc;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.kid-friendly-badge .material-symbols-sharp {
+  font-size: 14px;
+}
+.featured-badge + .kid-friendly-badge,
+.team-fav-badge + .kid-friendly-badge {
+  top: 38px;
+}
+.featured-badge + .team-fav-badge + .kid-friendly-badge {
+  top: 66px;
+}
+
 /* --- SEASONAL LABEL (in card details) --- */
 .seasonal-label {
   font-style: italic;
