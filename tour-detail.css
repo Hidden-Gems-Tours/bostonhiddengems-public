@@ -85,21 +85,8 @@
 }
 
 .tour-detail-header .new-tour-badge-inline {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  font-size: 12px !important;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-  color: #172436;
-  background: #d6e5fc;
-  padding: 4px 10px;
-  border-radius: 4px;
-}
-
-.tour-detail-header .new-tour-badge-inline .material-symbols-sharp {
   font-size: 14px !important;
+  color: #172436;
 }
 
 .tour-detail-header .nav-links {
