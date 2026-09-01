@@ -86,7 +86,7 @@
 
 .tour-detail-header .new-tour-badge-inline {
   font-size: 14px !important;
-  color: #172436;
+  color: var(--secondary-navy, #113973);
 }
 
 .tour-detail-header .nav-links {
