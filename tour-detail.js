@@ -28,13 +28,15 @@ function initRelatedTours(tourSku) {
   var currentTour = allToursArray.find(function(t) { return t.sku === tourSku; });
   if (!currentTour) return;
 
-  // Filter out: current tour, inactive tours, custom tours, and self-guided tours
+  // Filter out: current tour, inactive tours, hidden tours (no page exists yet),
+  // custom tours, and self-guided tours
   var excludedTypes = ['custom', 'self-guided'];
   var excludedSkus = ['Custom']; // Custom Tours has type "private" but should be excluded
   var relatedTours = allToursArray
     .filter(function(t) {
       return t.sku !== tourSku &&
              t.status && t.status.isActive &&
+             !t.isHidden &&
              !excludedTypes.includes(t.type) &&
              !excludedSkus.includes(t.sku);
     })
