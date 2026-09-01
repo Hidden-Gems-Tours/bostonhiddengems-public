@@ -346,41 +346,6 @@
   top: 66px;
 }
 
-/* --- NEW TOUR BADGE --- */
-.new-tour-badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-  color: #172436;
-  background: #d6e5fc;
-  padding: 4px 10px;
-  border-radius: 4px;
-}
-.new-tour-badge .material-symbols-sharp {
-  font-size: 14px;
-}
-.featured-badge + .new-tour-badge,
-.team-fav-badge + .new-tour-badge,
-.kid-friendly-badge + .new-tour-badge {
-  top: 38px;
-}
-.featured-badge + .team-fav-badge + .new-tour-badge,
-.featured-badge + .kid-friendly-badge + .new-tour-badge,
-.team-fav-badge + .kid-friendly-badge + .new-tour-badge {
-  top: 66px;
-}
-.featured-badge + .team-fav-badge + .kid-friendly-badge + .new-tour-badge {
-  top: 94px;
-}
-
 /* --- SEASONAL LABEL (in card details) --- */
 .seasonal-label {
   font-style: italic;

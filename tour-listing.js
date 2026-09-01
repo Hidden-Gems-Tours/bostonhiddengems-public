@@ -368,17 +368,17 @@ function renderTourCards(containerId, options = {}) {
     const featuredBadgeHTML = showFeaturedBadge && tour.ranking <= 3 ? '<span class="featured-badge"><span class="material-symbols-sharp" aria-hidden="true">workspace_premium</span> Featured</span>' : '';
     const teamFavBadgeHTML = tour.teamFavorite ? '<span class="team-fav-badge"><img src="https://images.squarespace-cdn.com/content/62db227779f36e51d2786802/1694148041368-KN5HSPUCITLWUYHXUYIA/BHG_Logo_ctr.png" alt="" aria-hidden="true" width="14" height="14" /> Team Favorite</span>' : '';
     const kidFriendlyBadgeHTML = tour.kidFriendly ? '<span class="kid-friendly-badge"><span class="material-symbols-sharp" aria-hidden="true">child_care</span> Kid-Friendly</span>' : '';
-    const newTourBadgeHTML = tour.newTour ? '<span class="new-tour-badge"><span class="material-symbols-sharp" aria-hidden="true">auto_awesome</span> New Tour!</span>' : '';
+    const newTourPrefixHTML = tour.newTour ? '<em>New Tour!</em> ' : '';
 
     card.innerHTML = `
       <div class="card-image-cont">
-        ${featuredBadgeHTML}${teamFavBadgeHTML}${kidFriendlyBadgeHTML}${newTourBadgeHTML}
+        ${featuredBadgeHTML}${teamFavBadgeHTML}${kidFriendlyBadgeHTML}
         <img src="${tour.image}" alt="${tour.imgAlt}" style="${tour.imgStyle}" loading="lazy">
       </div>
       <div class="card-content">
         <h2>${tour.title}</h2>
         <div class="description-container">
-          <p class="card-details">${tour.description}</p>
+          <p class="card-details">${newTourPrefixHTML}${tour.description}</p>
         </div>
         ${detailsHTML}
       </div>`;
