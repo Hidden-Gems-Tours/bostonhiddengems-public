@@ -1087,3 +1087,5 @@ button.image-lightbox-trigger img {
     padding-top: 20px;
   }
 }
+
+.bhg-muted-tiles { filter: grayscale(0.7) contrast(1) brightness(1.1); }
