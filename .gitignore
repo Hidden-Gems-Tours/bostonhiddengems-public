@@ -219,5 +219,6 @@ site/
 .local/
 local/
 
-# Claude Code settings (local only)
-.claude/settings.local.json
+# Claude Code config. NEVER commit .claude/ here: it holds skills with
+# internal workflows and staff/billing details from the private repo.
+.claude/

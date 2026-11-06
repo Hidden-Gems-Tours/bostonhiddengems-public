@@ -27,6 +27,7 @@ The following must **NEVER** be committed to this repository:
 - Internal API endpoints or URLs
 - Email addresses (except public contact info)
 - Internal documentation or business processes
+- The `.claude/` directory (skills, agents, settings). It holds internal workflows and staff/billing details that live in the private repo only
 
 ### Before Every Commit
 
